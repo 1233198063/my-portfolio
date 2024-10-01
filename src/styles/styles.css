@@ -1,0 +1,51 @@
+.element {
+  padding: 100px 20px;
+  height: 500px;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.9);
+  padding: 10px;
+  z-index: 10;
+}
+nav ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  background-color: hsla(0, 0%, 100%, 0.25);
+  padding: 10px;
+}
+nav ul li a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 20px;
+}
+nav ul li a:hover {
+  color: blue;
+}
+/* right dot nav */
+.dot-nav {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.dot-nav li {
+  margin: 10px 0;
+}
+.dot-nav .dot {
+  width: 15px;
+  height: 15px;
+  background-color: lightgray;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+.dot-nav .dot.active {
+  background-color: #010146;
+}
