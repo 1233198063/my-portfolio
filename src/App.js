@@ -5,6 +5,8 @@ import cssLogo from "./images/css.png";
 import htmlLogo from "./images/html.png";
 import jsLogo from "./images/js.png";
 import reactLogo from "./images/react.png";
+import linkedin from "./images/linkedin.svg";
+import github from "./images/logo.png";
 
 function App() {
   const [activeSection, setActiveSection] = useState("");
@@ -39,6 +41,7 @@ function App() {
     <div>
       {/* top navbar */}
       <nav>
+        <div className="logo"><span class="thin-span">Yuexin</span>Li</div>
         <ul>
           <li>
             <Link to="home" smooth={true} duration={500}>
@@ -78,16 +81,21 @@ function App() {
       </ul>
 
       {/* home section */}
-      <Element name="home" className="element" data-section="home">
-        <h1>Home Section</h1>
-        <div className="introduce">Hi, I'm Yuexin Li</div>
-        <div className="skills">
-          WEB DEVELOPER FRONTEND ENGINEER REACT NATIVE DEVELOPER BACKEND
-          ENGINEER FULLSTACK DEVELOPER
+      <Element name="home" className="element home" data-section="home">
+        <h1 className="introduce">Hi, I'm Yuexin Li</h1>
+        <div className="position">
+          WEB DEVELOPER
+          <br />
+          FRONTEND ENGINEER
+          <br />
+          REACT NATIVE DEVELOPER
+          {/* <br/>BACKEND ENGINEER  */}
+          <br />
+          FULLSTACK DEVELOPER
         </div>
-        <div className="photo"></div>
-        <ul className="skills">
-          <li>
+        <div className="photo">my photo</div>
+        <ul className="skills-img">
+          <li className="css-logo">
             <img src={cssLogo} alt="CSS Logo" />
           </li>
           <li>
@@ -100,6 +108,19 @@ function App() {
             <img src={reactLogo} alt="React Logo" />
           </li>
         </ul>
+
+        <div class="social-media">
+            <a className="linkedin" href="https://www.linkedin.com/in/yuexin-li-317401251/">
+              <img src={linkedin} alt="linkedin icon" />
+            </a>
+
+            
+            <a className="github" href="https://github.com/1233198063">
+                {/* <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Tahsin Tahil - Flaticon</a> */}
+                <img src={github} alt="github icon"></img>
+                {/* <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Tahsin Tahil - Flaticon</a> */}
+            </a>
+        </div>
       </Element>
 
       <Element name="about" className="element" data-section="about">
