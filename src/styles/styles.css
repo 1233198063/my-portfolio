@@ -141,3 +141,192 @@ nav ul li a:hover {
     flex-direction: column;
   }
 }
+.element.about {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.element.about .about-cards {
+  width: 100%;
+  transform: scale(0.8, 0.8);
+  transition: all 2s;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 26.04166667px;
+}
+.element.about .about-cards .about-card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  row-gap: 26.04166667px;
+  padding: 15.625px;
+  border: 0.52083333px solid #e6e6f3;
+  border-radius: 10.41666667px;
+  background-color: #fff;
+  transition: transform 0.5s ease;
+}
+.element.about .about-cards .about-card .card-img {
+  position: relative;
+  height: 100%;
+  min-height: 234.375px;
+  border-radius: 10.41666667px;
+  background-color: #516381;
+  overflow: hidden;
+}
+.element.about .about-cards .about-card .card-img img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  transition: all 0.5s;
+}
+.element.about .about-cards .about-card .card-info {
+  padding-bottom: 15.625px;
+}
+.element.about .about-cards .about-card .card-info h3 {
+  padding-bottom: 15.625px;
+}
+.element.about .about-cards .about-card .card-info p {
+  color: #516381;
+  font-size: 25px;
+}
+.element.about .about-cards .about-card:hover {
+  border: none;
+  transform: scale(1.05);
+  box-shadow: 0px 5.20833333px 5.20833333px 5.20833333px rgba(192, 192, 211, 0.3);
+}
+.element.about .about-cards .about-card:hover .card-img img {
+  transform: scale(1.1);
+}
+.element.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f8fc;
+}
+.element.work .browse-work {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 15.625px;
+  row-gap: 15.625px;
+  margin: 26.04166667px 0px 93.75px;
+}
+.element.work .browse-work a {
+  text-decoration: none;
+  color: black;
+}
+.element.work .browse-work .post {
+  background-color: #fff;
+  box-shadow: 0 12px 36px -8px rgba(53, 64, 117, 0.1);
+  border-radius: 5.20833333px;
+  overflow: hidden;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 26.04166667px;
+}
+.element.work .browse-work .post .post-top {
+  height: 260.41666667px;
+  width: 100%;
+  overflow: hidden;
+}
+.element.work .browse-work .post .post-top .post-img {
+  width: 100%;
+  transition: all 0.5s;
+}
+.element.work .browse-work .post .post-bottom {
+  height: 260.41666667px;
+  padding: 0px 26.04166667px;
+  padding-top: 46.875px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.element.work .browse-work .post .post-bottom .subtitle {
+  background-color: antiquewhite;
+  border-radius: 5.20833333px;
+  padding: 10.41666667px 5.20833333px;
+  font-size: 8.33333333px;
+  letter-spacing: 3.125px;
+  max-width: 114.58333333px;
+  position: absolute;
+  top: -13.54166667px;
+  left: 15.625px;
+  z-index: 5;
+}
+.element.work .browse-work .post .post-bottom h3 {
+  font-size: 20.83333333px;
+  font-weight: 500;
+}
+.element.work .browse-work .post .post-bottom p {
+  font-size: 15.625px;
+  line-height: 20.83333333px;
+}
+.element.work .browse-work .post:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+.element.work .browse-work .post:hover .post-img {
+  transform: scale3d(1.05, 1.05, 1.05);
+}
+.element.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 93.75px;
+  overflow: hidden;
+}
+.element.skills .skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 93.75px;
+}
+.element.skills .skills-icons .skills-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15.625px;
+}
+.element.skills .skills-icons .skills-icon .circle {
+  height: 78.125px;
+  width: 78.125px;
+  background-color: antiquewhite;
+  border-radius: 50%;
+  padding: 15.625px;
+  overflow: hidden;
+}
+.element.skills .skills-icons .skills-icon .circle img {
+  height: 100%;
+  width: 100%;
+}
+.element.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.element.contact .contact-cards {
+  display: flex;
+}
+.element.contact .contact-cards .contact-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15.625px;
+  margin: 10.41666667px;
+  border-radius: 7.8125px;
+}
+.element.contact .contact-cards .contact-card img {
+  width: 39.0625px;
+  margin-right: 10.41666667px;
+}
+.element.contact .contact-cards .email-card {
+  background-color: antiquewhite;
+}
+.element.contact .contact-cards .phone-card {
+  background-color: pink;
+}

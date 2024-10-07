@@ -74,7 +74,6 @@ nav {
 
     li a:hover {
       color: #030396;
-      
     }
   }
 }
@@ -108,7 +107,6 @@ nav {
   }
 }
 
-
 // home section
 .element.home {
   position: relative;
@@ -139,7 +137,7 @@ nav {
       display: flex;
       align-items: center;
       justify-content: center;
-      
+
       img {
         width: @margin-mini;
         height: @margin-mini;
@@ -157,38 +155,288 @@ nav {
     position: absolute;
     bottom: @padding-large;
     left: @padding-big;
-  
+
     a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.2 * @padding-large;
-        height: 1.2 * @padding-large;
-        background-color: #f7f8fc;
-        border: (10px / @vw) solid rgba(192, 192, 211, 0.2);
-        border-radius: 100%;
-        margin: (100px / @vw);
-  
-        img {
-            width: 50%;
-            height: 50%;
-            transition: width 0.5s ease;
-        }
-  
-        img:hover {
-            width: 60%;
-            height: 60%;
-        }
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.2 * @padding-large;
+      height: 1.2 * @padding-large;
+      background-color: #f7f8fc;
+      border: (10px / @vw) solid rgba(192, 192, 211, 0.2);
+      border-radius: 100%;
+      margin: (100px / @vw);
+
+      img {
+        width: 50%;
+        height: 50%;
+        transition: width 0.5s ease;
+      }
+
+      img:hover {
+        width: 60%;
+        height: 60%;
+      }
     }
-  
+
     a:hover {
       background-color: #030396;
     }
   }
 }
 
-@media screen and (min-width:900px) {
+@media screen and (min-width: 900px) {
   .skills-img {
+    flex-direction: column;
+  }
+}
+
+// about me section
+.element.about {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .about-cards {
+    width: 100%;
+
+    transform: scale(0.8, 0.8);
+    transition: all 2s;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: (500px / @vw);
+
+    .about-card {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      row-gap: (500px / @vw);
+
+      padding: (300px / @vw);
+      border: (10px / @vw) solid #e6e6f3;
+      border-radius: (200px / @vw);
+      background-color: #fff;
+
+      transition: transform 0.5s ease;
+
+      .card-img {
+        position: relative;
+        // height: (5000px / @vw);
+        height: 100%;
+
+        min-height: (4500px / @vw);
+
+        border-radius: (200px / @vw);
+        background-color: #516381;
+
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          vertical-align: middle;
+          transition: all 0.5s;
+        }
+      }
+
+      .card-info {
+        padding-bottom: @padding-big;
+
+        h3 {
+          padding-bottom: @padding-big;
+        }
+
+        p {
+          color: #516381;
+          font-size: 1.6 * @padding-big;
+        }
+      }
+    }
+
+    .about-card:hover {
+      border: none;
+      transform: scale(1.05);
+      box-shadow: 0px @padding-mini @padding-mini @padding-mini
+        rgba(192, 192, 211, 0.3);
+    }
+
+    .about-card:hover .card-img img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// works section
+.element.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f8fc;
+
+  .browse-work {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: @padding-big;
+    row-gap: @padding-big;
+
+    margin: @padding-large 0px @margin-big;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .post {
+      background-color: #fff;
+      box-shadow: 0 12px 36px -8px rgba(53, 64, 117, 0.1);
+      border-radius: @padding-mini;
+
+      overflow: hidden;
+
+      transition: all 0.5s;
+
+      display: flex;
       flex-direction: column;
+
+      padding-bottom: @padding-large;
+
+      .post-top {
+        height: (5000px / @vw);
+        width: 100%;
+
+        overflow: hidden;
+
+        .post-img {
+          width: 100%;
+
+          transition: all 0.5s;
+        }
+      }
+
+      .post-bottom {
+        height: (5000px / @vw);
+        padding: 0px @padding-large;
+        padding-top: (900px / @vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        position: relative;
+
+        .subtitle {
+          background-color: antiquewhite;
+          border-radius: @padding-mini;
+          padding: @padding-small @padding-mini;
+
+          font-size: (160px / @vw);
+          letter-spacing: (60px / @vw);
+
+          max-width: (2200px / @vw);
+
+          position: absolute;
+          top: -(260px / @vw);
+          left: @padding-big;
+          z-index: 5;
+        }
+
+        h3 {
+          font-size: (400px / @vw);
+          font-weight: 500;
+        }
+
+        p {
+          font-size: (300px / @vw);
+          line-height: (400px / @vw);
+        }
+      }
+    }
+
+    .post:hover {
+      transform: scale3d(1.1, 1.1, 1.1);
+
+      .post-img {
+        transform: scale3d(1.05, 1.05, 1.05);
+      }
+    }
+  }
+}
+
+// skills section
+.element.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0px @margin-big;
+
+  overflow: hidden;
+
+  .skills-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: @margin-big;
+
+    .skills-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: @padding-big;
+
+      .circle {
+        height: @margin-small;
+        width: @margin-small;
+        background-color: antiquewhite;
+        border-radius: 50%;
+        padding: @padding-big;
+
+        overflow: hidden;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.element.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .contact-cards {
+    display: flex;
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: @padding-big;
+      margin: @padding-small;
+      border-radius: 1.5 * @padding-mini;
+
+      img {
+        width: 1.5 * @padding-large;
+        margin-right: @padding-small;
+      }
+    }
+
+    .email-card {
+      background-color: antiquewhite;
+    }
+
+    .phone-card {
+      background-color: pink;
+    }
   }
 }
