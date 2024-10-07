@@ -218,7 +218,7 @@ function App() {
         <h1>My Works</h1>
 
         <div className="browse-work">
-          <a href="https://1233198063.github.io/vacation-web/">
+          <a href="https://1233198063.github.io/vacation-web/" target="_blank">
             <div className="post">
               <div className="post-top">
                 <img src={vacationProject} className="post-img"></img>
@@ -237,7 +237,7 @@ function App() {
             </div>
           </a>
 
-          <a href="https://1233198063.github.io/Weather-API-Platform/">
+          <a href="https://1233198063.github.io/Weather-API-Platform/" target="_blank">
             <div className="post">
               <div className="post-top">
                 <img src={weatherProject} className="post-img"></img>
@@ -254,7 +254,7 @@ function App() {
             </div>
           </a>
 
-          <a href="">
+          <a href="" target="_blank">
             <div className="post">
               <div className="post-top">
                 <img src={shopProject} className="post-img"></img>
