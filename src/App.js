@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, Element } from "react-scroll";
 import "./styles/styles.css";
+import myPhoto from "./images/大证件照.jpg";
 import htmlLogo from "./images/css.png";
 import cssLogo from "./images/html.png";
 import jsLogo from "./images/js.png";
@@ -96,34 +97,44 @@ function App() {
         <li className={activeSection === "contact" ? "dot active" : "dot"}></li>
       </ul>
 
-      {/* home section */}
+      {/* Home section */}
       <Element name="home" className="element home" data-section="home">
-        <h1 className="introduce">Hi, I'm Yuexin Li</h1>
-        <div className="position">
-          WEB DEVELOPER
-          <br />
-          FRONTEND ENGINEER
-          <br />
-          REACT NATIVE DEVELOPER
-          {/* <br/>BACKEND ENGINEER  */}
-          <br />
-          FULLSTACK DEVELOPER
+        <h1 className="introduce">
+          Hi, I'm Yuexin Li
+          <span class="material-symbols-outlined">handshake</span>
+        </h1>
+
+        <div className="content">
+          <div className="position">
+            WEB DEVELOPER
+            <br />
+            FRONTEND ENGINEER
+            <br />
+            REACT NATIVE DEVELOPER
+            {/* <br/>BACKEND ENGINEER  */}
+            {/* <br /> */}
+            {/* FULLSTACK DEVELOPER */}
+          </div>
+          <img
+            className="photo"
+            src={myPhoto}
+            alt="My formal business attire ID photo"
+          />
+          <ul className="skills-img">
+            <li className="css-logo">
+              <img src={cssLogo} alt="CSS Logo" />
+            </li>
+            <li>
+              <img src={htmlLogo} alt="HTML Logo" />
+            </li>
+            <li>
+              <img src={jsLogo} alt="JavaScript Logo" />
+            </li>
+            <li>
+              <img src={reactLogo} alt="React Logo" />
+            </li>
+          </ul>
         </div>
-        <div className="photo">my photo</div>
-        <ul className="skills-img">
-          <li className="css-logo">
-            <img src={cssLogo} alt="CSS Logo" />
-          </li>
-          <li>
-            <img src={htmlLogo} alt="HTML Logo" />
-          </li>
-          <li>
-            <img src={jsLogo} alt="JavaScript Logo" />
-          </li>
-          <li>
-            <img src={reactLogo} alt="React Logo" />
-          </li>
-        </ul>
 
         <div className="social-media">
           <a
@@ -339,7 +350,7 @@ function App() {
           <div className="contact-card phone-card">
             {/* <a href="https://www.flaticon.com/free-icons/cellphone" title="cellphone icons">Cellphone icons created by riajulislam - Flaticon</a> */}
             <img className="phone-number" src={phone}></img>
-            <p>9257919319</p>
+            <p>(925)-791-9319</p>
           </div>
         </div>
       </Element>

@@ -77,19 +77,43 @@ nav ul li a:hover {
 .element.home {
   position: relative;
   background-color: #f7f8fc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.element.home .photo {
-  width: 93.75px;
-  height: 93.75px;
+.element.home h1 {
+  display: flex;
+  align-items: center;
+}
+.element.home h1 span {
+  margin-left: 26.04166667px;
+}
+.element.home .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.element.home .content .position {
+  padding: 26.04166667px;
   background-color: antiquewhite;
+  border-radius: 10.41666667px;
 }
-.element.home .skills-img {
+.element.home .content .photo {
+  margin-left: 0px;
+  margin-top: 26.04166667px;
+  width: 416.66666667px;
+  border-radius: 50%;
+}
+.element.home .content .skills-img {
   list-style: none;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   gap: 26.04166667px;
 }
-.element.home .skills-img li {
+.element.home .content .skills-img li {
   width: 78.125px;
   height: 78.125px;
   background-color: antiquewhite;
@@ -99,7 +123,7 @@ nav ul li a:hover {
   align-items: center;
   justify-content: center;
 }
-.element.home .skills-img li img {
+.element.home .content .skills-img li img {
   width: 52.08333333px;
   height: 52.08333333px;
   object-fit: cover;
@@ -110,7 +134,7 @@ nav ul li a:hover {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  bottom: 26.04166667px;
+  bottom: 156.25px;
   left: 15.625px;
 }
 .element.home .social-media a {
@@ -137,7 +161,13 @@ nav ul li a:hover {
   background-color: #030396;
 }
 @media screen and (min-width: 900px) {
-  .skills-img {
+  .home.element .content {
+    flex-direction: row;
+  }
+  .home.element .content .photo {
+    margin-left: 26.04166667px;
+  }
+  .home.element .content .skills-img {
     flex-direction: column;
   }
 }
@@ -308,6 +338,7 @@ nav ul li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f7f8fc;
 }
 .element.contact .contact-cards {
   display: flex;

@@ -111,37 +111,67 @@ nav {
 .element.home {
   position: relative;
   background-color: #f7f8fc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  .photo {
-    width: @margin-big;
-    height: @margin-big;
-    background-color: antiquewhite;
+  h1 {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: @padding-large;
+    }
   }
 
-  .skills-img {
-    list-style: none;
-
+  .content {
     display: flex;
-    justify-content: space-around;
-    gap: @padding-large;
+    flex-direction: column;
 
-    li {
-      width: @margin-small;
-      height: @margin-small;
+    justify-content: center;
+    align-items: center;
 
+    .position {
+      padding: @padding-large;
       background-color: antiquewhite;
-      border-radius: 50%;
+      border-radius: @padding-small;
+    }
 
-      overflow: hidden;
+    .photo {
+      margin-left: 0px;
+      margin-top: @padding-large;
+      width: (8000px / @vw);
+
+      border-radius: 50%;
+    }
+
+    .skills-img {
+      list-style: none;
 
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: @padding-large;
 
-      img {
-        width: @margin-mini;
-        height: @margin-mini;
-        object-fit: cover;
+      li {
+        width: @margin-small;
+        height: @margin-small;
+
+        background-color: antiquewhite;
+        border-radius: 50%;
+
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: @margin-mini;
+          height: @margin-mini;
+          object-fit: cover;
+        }
       }
     }
   }
@@ -153,7 +183,7 @@ nav {
     align-items: center;
 
     position: absolute;
-    bottom: @padding-large;
+    bottom: 6 * @padding-large;
     left: @padding-big;
 
     a {
@@ -186,8 +216,16 @@ nav {
 }
 
 @media screen and (min-width: 900px) {
-  .skills-img {
-    flex-direction: column;
+  .home.element .content {
+    flex-direction: row;
+
+    .photo {
+      margin-left: @padding-large;
+    }
+
+    .skills-img {
+      flex-direction: column;
+    }
   }
 }
 
@@ -412,7 +450,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  background-color: #f7f8fc;
   .contact-cards {
     display: flex;
 
