@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/my-portfolio/static/css/main.4dfc643d.css",
+    "main.js": "/my-portfolio/static/js/main.6c88dd79.js",
+    "static/js/453.acca0757.chunk.js": "/my-portfolio/static/js/453.acca0757.chunk.js",
+    "static/media/vacation.png": "/my-portfolio/static/media/vacation.22f6a0c33cedc37158ab.png",
+    "static/media/大证件照.jpg": "/my-portfolio/static/media/大证件照.b40ebc5e006d3b329d12.jpg",
+    "static/media/eyewear.png": "/my-portfolio/static/media/eyewear.0212d97c603df415851e.png",
+    "static/media/Weather.png": "/my-portfolio/static/media/Weather.b57cc9881952393535a6.png",
+    "static/media/react-picture.png": "/my-portfolio/static/media/react-picture.35639ed930462bfcd544.png",
+    "static/media/phone.png": "/my-portfolio/static/media/phone.c321e157e62d55d4c6fe.png",
+    "static/media/logo.png": "/my-portfolio/static/media/logo.332584fdf67b75ccd094.png",
+    "static/media/app-development.png": "/my-portfolio/static/media/app-development.f9d169e80e84e333a6d1.png",
+    "static/media/node.png": "/my-portfolio/static/media/node.8683d89cf78ffae3d1f7.png",
+    "static/media/sass.png": "/my-portfolio/static/media/sass.27a6499d213e1c684102.png",
+    "static/media/redux.png": "/my-portfolio/static/media/redux.db10f1a9ea461769539a.png",
+    "static/media/email.png": "/my-portfolio/static/media/email.14157efadeebea1d8588.png",
+    "static/media/ux.png": "/my-portfolio/static/media/ux.ffa3e0dd754dc923e50b.png",
+    "static/media/html.png": "/my-portfolio/static/media/html.5721a3928fe43de6baf8.png",
+    "static/media/linkedin.svg": "/my-portfolio/static/media/linkedin.2f3caeb325c6932b7b6e12fba4c2240b.svg",
+    "index.html": "/my-portfolio/index.html",
+    "main.4dfc643d.css.map": "/my-portfolio/static/css/main.4dfc643d.css.map",
+    "main.6c88dd79.js.map": "/my-portfolio/static/js/main.6c88dd79.js.map",
+    "453.acca0757.chunk.js.map": "/my-portfolio/static/js/453.acca0757.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4dfc643d.css",
+    "static/js/main.6c88dd79.js"
+  ]
+}
