@@ -228,6 +228,63 @@ nav ul li a:hover {
 .element.about .about-cards .about-card:hover .card-img img {
   transform: scale(1.1);
 }
+.element.experience {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f8fc;
+}
+.element.experience .experience-card {
+  background-color: #ffffff;
+  border-radius: 5.20833333px;
+  padding: 15.625px;
+  margin: 10.41666667px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.element.experience .experience-card .experience-header h3 {
+  font-size: 1.8rem;
+  color: #030396;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+.element.experience .experience-card .experience-header .experience-details .position {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 5px 0;
+}
+.element.experience .experience-card .experience-header .experience-details .duration,
+.element.experience .experience-card .experience-header .experience-details .location {
+  font-size: 1rem;
+  color: #666;
+  margin: 3px 0;
+}
+.element.experience .experience-card .tech-stack {
+  margin: 15px 0;
+}
+.element.experience .experience-card .tech-stack .tech {
+  background-color: #030396;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+.element.experience .experience-card .achievements {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+.element.experience .experience-card .achievements li {
+  padding: 8px 0;
+  border-left: 3px solid #030396;
+  padding-left: 15px;
+  margin: 10px 0;
+  line-height: 1.5;
+  color: #333;
+}
 .element.work {
   display: flex;
   flex-direction: column;
@@ -274,25 +331,32 @@ nav ul li a:hover {
   justify-content: space-between;
   position: relative;
 }
-.element.work .browse-work .post .post-bottom .subtitle {
-  background-color: antiquewhite;
-  border-radius: 5.20833333px;
-  padding: 10.41666667px 5.20833333px;
-  font-size: 8.33333333px;
-  letter-spacing: 3.125px;
-  max-width: 114.58333333px;
-  position: absolute;
-  top: -13.54166667px;
-  left: 15.625px;
-  z-index: 5;
-}
 .element.work .browse-work .post .post-bottom h3 {
-  font-size: 20.83333333px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #030396;
+  margin: 10px 0 5px 0;
+}
+.element.work .browse-work .post .post-bottom .subtitle {
+  background-color: #030396;
+  color: white;
+  border-radius: 15px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: normal;
+  display: inline-block;
+  margin: 0 0 15px 0;
+  width: fit-content;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 .element.work .browse-work .post .post-bottom p {
-  font-size: 15.625px;
-  line-height: 20.83333333px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
 }
 .element.work .browse-work .post:hover {
   transform: scale3d(1.1, 1.1, 1.1);

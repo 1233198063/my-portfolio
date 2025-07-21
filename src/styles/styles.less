@@ -307,6 +307,77 @@ nav {
   }
 }
 
+// experience section
+.element.experience {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f8fc;
+
+  .experience-card {
+    background-color: #ffffff;
+    border-radius: @padding-mini;
+    padding: @padding-big;
+    margin: @padding-small auto;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .experience-header {
+      h3 {
+        font-size: 1.8rem;
+        color: #030396;
+        margin: 0 0 10px 0;
+        font-weight: 700;
+      }
+
+      .experience-details {
+        .position {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: #333;
+          margin: 5px 0;
+        }
+
+        .duration,
+        .location {
+          font-size: 1rem;
+          color: #666;
+          margin: 3px 0;
+        }
+      }
+    }
+
+    .tech-stack {
+      margin: 15px 0;
+
+      .tech {
+        background-color: #030396;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: inline-block;
+      }
+    }
+
+    .achievements {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+
+      li {
+        padding: 8px 0;
+        border-left: 3px solid #030396;
+        padding-left: 15px;
+        margin: 10px 0;
+        line-height: 1.5;
+        color: #333;
+      }
+    }
+  }
+}
+
 // works section
 .element.work {
   display: flex;
@@ -365,30 +436,34 @@ nav {
 
         position: relative;
 
-        .subtitle {
-          background-color: antiquewhite;
-          border-radius: @padding-mini;
-          padding: @padding-small @padding-mini;
-
-          font-size: (160px / @vw);
-          letter-spacing: (60px / @vw);
-
-          max-width: (2200px / @vw);
-
-          position: absolute;
-          top: -(260px / @vw);
-          left: @padding-big;
-          z-index: 5;
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #030396;
+          margin: 10px 0 5px 0;
         }
 
-        h3 {
-          font-size: (400px / @vw);
+        .subtitle {
+          background-color: #030396;
+          color: white;
+          border-radius: 15px;
+          padding: 6px 12px;
+          font-size: 0.8rem;
           font-weight: 500;
+          letter-spacing: normal;
+          display: inline-block;
+          margin: 0 0 15px 0;
+          width: fit-content;
+          position: relative;
+          top: 0;
+          left: 0;
+          z-index: 1;
         }
 
         p {
-          font-size: (300px / @vw);
-          line-height: (400px / @vw);
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #333;
         }
       }
     }

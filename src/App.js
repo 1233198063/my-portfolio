@@ -71,6 +71,11 @@ function App() {
             </Link>
           </li>
           <li>
+            <Link to="experience" smooth={true} duration={500}>
+              Experience
+            </Link>
+          </li>
+          <li>
             <Link to="work" smooth={true} duration={500}>
               Work
             </Link>
@@ -92,6 +97,7 @@ function App() {
       <ul className="dot-nav">
         <li className={activeSection === "home" ? "dot active" : "dot"}></li>
         <li className={activeSection === "about" ? "dot active" : "dot"}></li>
+        <li className={activeSection === "experience" ? "dot active" : "dot"}></li>
         <li className={activeSection === "work" ? "dot active" : "dot"}></li>
         <li className={activeSection === "skills" ? "dot active" : "dot"}></li>
         <li className={activeSection === "contact" ? "dot active" : "dot"}></li>
@@ -211,6 +217,28 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </Element>
+
+      <Element name="experience" className="element experience" data-section="experience">
+        <h1>My Experience</h1>
+        <div className="experience-card">
+          <div className="experience-header">
+            <h3>SiriusMindShare LLC</h3>
+            <div className="experience-details">
+              <p className="position">Data Scientist Intern</p>
+              <p className="duration">Feb. 2025 – Aug. 2025</p>
+              <p className="location">San Jose, CA</p>
+            </div>
+          </div>
+          <div className="tech-stack">
+            <span className="tech subtitle">Python, OpenCV, Tesseract OCR, NLTK, Regex, Google Colab</span>
+          </div>
+          <ul className="achievements">
+            <li>Built a robust OCR and token parsing pipeline using Python, OpenCV, and Tesseract to process 50K+ noisy signage tokens; improved recognition accuracy from 70% to 92%.</li>
+            <li>Engineered fault-tolerant preprocessing modules (deskewing, binarization) to support 150+ real-world storefront images with runtime recovery.</li>
+            <li>Delivered a reproducible diagnostic interface in Google Colab for pipeline analysis and visualization, reducing debugging effort by 65%.</li>
+          </ul>
         </div>
       </Element>
 
