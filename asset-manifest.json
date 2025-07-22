@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/my-portfolio/static/css/main.4dfc643d.css",
-    "main.js": "/my-portfolio/static/js/main.6c88dd79.js",
+    "main.css": "/my-portfolio/static/css/main.e857bd44.css",
+    "main.js": "/my-portfolio/static/js/main.029b3373.js",
     "static/js/453.acca0757.chunk.js": "/my-portfolio/static/js/453.acca0757.chunk.js",
     "static/media/vacation.png": "/my-portfolio/static/media/vacation.22f6a0c33cedc37158ab.png",
     "static/media/大证件照.jpg": "/my-portfolio/static/media/大证件照.b40ebc5e006d3b329d12.jpg",
@@ -19,12 +19,12 @@
     "static/media/html.png": "/my-portfolio/static/media/html.5721a3928fe43de6baf8.png",
     "static/media/linkedin.svg": "/my-portfolio/static/media/linkedin.2f3caeb325c6932b7b6e12fba4c2240b.svg",
     "index.html": "/my-portfolio/index.html",
-    "main.4dfc643d.css.map": "/my-portfolio/static/css/main.4dfc643d.css.map",
-    "main.6c88dd79.js.map": "/my-portfolio/static/js/main.6c88dd79.js.map",
+    "main.e857bd44.css.map": "/my-portfolio/static/css/main.e857bd44.css.map",
+    "main.029b3373.js.map": "/my-portfolio/static/js/main.029b3373.js.map",
     "453.acca0757.chunk.js.map": "/my-portfolio/static/js/453.acca0757.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4dfc643d.css",
-    "static/js/main.6c88dd79.js"
+    "static/css/main.e857bd44.css",
+    "static/js/main.029b3373.js"
   ]
 }
