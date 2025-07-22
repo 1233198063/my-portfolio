@@ -104,7 +104,11 @@ nav ul li a:hover {
   margin-left: 0px;
   margin-top: 26.04166667px;
   width: 416.66666667px;
+  height: 416.66666667px;
   border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
 }
 .element.home .content .skills-img {
   list-style: none;
@@ -160,6 +164,593 @@ nav ul li a:hover {
 .element.home .social-media a:hover {
   background-color: #030396;
 }
+
+/* Social media links for all other sections */
+.element:not(.home) .social-media {
+  padding: 15.625px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 156.25px;
+  left: 15.625px;
+  z-index: 10;
+}
+
+.element:not(.home) .social-media a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 31.25px;
+  height: 31.25px;
+  background-color: #f7f8fc;
+  border: 0.52083333px solid rgba(192, 192, 211, 0.2);
+  border-radius: 100%;
+  margin: 5.20833333px;
+}
+
+.element:not(.home) .social-media a img {
+  width: 50%;
+  height: 50%;
+  transition: width 0.5s ease;
+}
+
+.element:not(.home) .social-media a img:hover {
+  width: 60%;
+  height: 60%;
+}
+
+.element:not(.home) .social-media a:hover {
+  background-color: #030396;
+}
+
+
+/* Hamburger menu styles - apply to all screen sizes first */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background-color: #030396;
+  margin: 3px 0;
+  transition: 0.3s;
+  display: block;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile-first responsive design */
+@media screen and (max-width: 768px) {
+  /* Base element padding for mobile - add top padding to avoid nav overlay */
+  .element {
+    padding: 100px 20px 40px 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  /* Navigation responsive - hamburger menu */
+  nav {
+    padding: 12px 15px;
+    font-size: 14px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    height: 60px;
+    box-sizing: border-box;
+  }
+  
+  nav .logo {
+    font-size: 18px;
+    margin-bottom: 0;
+    flex: 0 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  /* Show hamburger menu on mobile */
+  .hamburger-menu {
+    display: flex;
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Hide regular navigation menu on mobile, show as dropdown */
+  .nav-menu {
+    position: fixed;
+    right: -100%;
+    top: 60px;
+    flex-direction: column;
+    background-color: rgba(247, 248, 252, 0.95);
+    width: 100%;
+    text-align: center;
+    transition: right 0.3s ease-in-out;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    padding: 20px 0;
+    gap: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .nav-menu.open {
+    right: 0;
+  }
+  
+  .nav-menu li {
+    margin: 15px 0;
+    padding: 0;
+    font-size: 16px;
+  }
+  
+  .nav-menu li a {
+    color: #030396;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-menu li a:hover {
+    background-color: rgba(3, 3, 150, 0.1);
+  }
+  
+  /* Dot navigation for mobile */
+  .dot-nav {
+    right: 10px;
+  }
+  
+  .dot-nav .dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  /* Home section mobile */
+  .element.home h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .element.home .content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .element.home .content .position {
+    padding: 16px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .element.home .content .photo {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .element.home .content .skills-img {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .element.home .content .skills-img li img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* About section mobile */
+  .element.about {
+    min-height: auto;
+    height: auto;
+    padding: 100px 20px 60px 20px;
+  }
+  
+  .element.about .about-cards {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    transform: scale(1);
+    gap: 25px;
+    padding: 0 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .element.about .about-cards .about-card {
+    margin: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px !important;
+    grid-template-rows: none !important;
+    min-height: auto !important;
+    text-align: center !important;
+  }
+  
+  .element.about .about-cards .about-card .card-img {
+    min-height: 100px !important;
+    height: 100px !important;
+    width: 100px !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 15px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background-color: #516381 !important;
+  }
+  
+  .element.about .about-cards .about-card .card-img img {
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 12px !important;
+    display: block !important;
+  }
+  
+  .element.about .about-cards .about-card .card-info {
+    flex: 1;
+    padding-bottom: 0;
+    width: 100%;
+  }
+  
+  .element.about .about-cards .about-card .card-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+  }
+  
+  .element.about .about-cards .about-card .card-info p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  /* Experience section mobile */
+  .element.experience {
+    min-height: auto;
+    height: auto;
+    padding: 100px 20px 60px 20px;
+  }
+  
+  .element.experience .experience-card {
+    padding: 20px !important;
+    margin: 30px 10px 100px 80px !important;
+    max-width: calc(100% - 90px) !important;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .element.experience .experience-card .experience-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .element.experience .experience-card .experience-header .experience-details {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .element.experience .experience-card .tech-stack .tech {
+    font-size: 0.8rem;
+  }
+  
+  .element.experience .experience-card .achievements li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Work/Projects section mobile */
+  .element.work {
+    min-height: auto;
+    height: auto;
+    padding: 100px 20px 60px 20px;
+  }
+  
+  .element.work .browse-work {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 30px;
+    margin: 30px 0 30px 80px;
+    width: calc(100% - 100px);
+    padding-left: 20px;
+  }
+  
+  .element.work .browse-work .post {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 0;
+  }
+  
+  .element.work .browse-work .post .post-top {
+    height: 180px;
+  }
+  
+  .element.work .browse-work .post .post-bottom {
+    height: auto;
+    padding: 16px;
+    min-height: 200px;
+  }
+  
+  .element.work .browse-work .post .post-bottom h3 {
+    font-size: 1.2rem;
+  }
+  
+  .element.work .browse-work .post .post-bottom p {
+    font-size: 0.9rem;
+  }
+  
+  /* Skills section mobile */
+  .element.skills {
+    min-height: auto;
+    height: auto;
+    padding: 100px 20px 60px 20px;
+  }
+  
+  .element.skills .skills-icons {
+    margin-top: 30px;
+    gap: 10px;
+  }
+  
+  .element.skills .skills-icons .skills-icon {
+    margin: 8px;
+  }
+  
+  .element.skills .skills-icons .skills-icon .circle {
+    height: 60px;
+    width: 60px;
+    padding: 12px;
+  }
+  
+  .element.skills .skills-icons .skills-icon p {
+    font-size: 0.8rem;
+  }
+  
+  /* Contact section mobile */
+  .element.contact {
+    min-height: auto;
+    height: auto;
+    padding: 100px 20px 60px 20px;
+  }
+  
+  .element.contact .contact-cards {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 30px;
+  }
+  
+  .element.contact .contact-cards .contact-card {
+    padding: 12px;
+    margin: 0;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .element.contact .contact-cards .contact-card img {
+    width: 32px;
+    margin-right: 0;
+  }
+  
+  .element.contact .contact-cards .contact-card p {
+    font-size: 0.9rem;
+  }
+  
+  /* Social media links mobile positioning */
+  .element .social-media {
+    bottom: 20px;
+    left: 10px;
+    padding: 10px;
+  }
+  
+  .element .social-media a {
+    width: 28px;
+    height: 28px;
+    margin: 3px;
+  }
+  
+  
+  /* Section headings mobile */
+  .element h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  /* Desktop and tablet navigation - hide hamburger, show regular menu */
+  .hamburger-menu {
+    display: none;
+  }
+  
+  .nav-menu {
+    position: static;
+    flex-direction: row;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 26.04166667px;
+    list-style-type: none;
+    padding: 10.41666667px;
+    margin: 0px;
+    transition: none;
+  }
+  
+  .nav-menu li {
+    margin: 0;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5.20833333px;
+    padding: 0px 15.625px;
+  }
+  
+  .nav-menu li:hover {
+    background-color: #f7f8fc;
+  }
+  
+  .nav-menu li a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    display: inline;
+  }
+  
+  .nav-menu li a:hover {
+    color: #030396;
+    background: none;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet styles */
+  .element {
+    padding: 60px 40px;
+    min-height: auto;
+    height: auto;
+  }
+  
+  nav {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+  
+  /* Work/Projects section tablet - avoid social media overlap */
+  .element.work {
+    min-height: 100vh;
+    height: auto;
+    padding: 80px 40px 100px 40px;
+  }
+  
+  .element.work .browse-work {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    flex-direction: initial !important;
+    margin: 30px 80px 30px 0;
+    width: calc(100% - 80px);
+  }
+  
+  /* About section tablet - fix overlapping and card display */
+  .element.about {
+    min-height: 100vh;
+    height: auto;
+    padding: 80px 40px 100px 40px;
+  }
+  
+  .element.about .about-cards {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    flex-direction: initial !important;
+    transform: scale(0.9);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .element.about .about-cards .about-card {
+    display: grid !important;
+    grid-template-rows: 200px auto !important;
+    flex-direction: initial !important;
+    margin: 0;
+    min-height: auto;
+  }
+  
+  .element.about .about-cards .about-card:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 20px auto 0;
+    justify-self: center;
+  }
+  
+  /* Experience section tablet - avoid social media overlap */
+  .element.experience {
+    min-height: 100vh;
+    height: auto;
+    padding: 80px 40px 100px 40px;
+  }
+  
+  .element.experience .experience-card {
+    margin: 0 20px 100px 120px;
+    max-width: calc(100% - 140px);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  /* Desktop styles */
+  .element.work .browse-work {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    flex-direction: initial !important;
+  }
+  
+  .element.about .about-cards {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    flex-direction: initial !important;
+    transform: scale(0.8);
+  }
+  
+  .element.about .about-cards .about-card {
+    display: grid !important;
+    grid-template-rows: 1fr auto !important;
+    flex-direction: initial !important;
+  }
+  
+  /* Experience section desktop - normal positioning */
+  .element.experience .experience-card {
+    margin: 0;
+    max-width: none;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .home.element .content {
     flex-direction: row;
@@ -234,6 +825,7 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   background-color: #f7f8fc;
+  position: relative;
 }
 .element.experience .experience-card {
   background-color: #ffffff;
@@ -291,6 +883,7 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   background-color: #f7f8fc;
+  position: relative;
 }
 .element.work .browse-work {
   display: grid;
@@ -369,8 +962,7 @@ nav ul li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0px 93.75px;
-  overflow: hidden;
+  position: relative;
 }
 .element.skills .skills-icons {
   display: flex;
@@ -403,6 +995,7 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   background-color: #f7f8fc;
+  position: relative;
 }
 .element.contact .contact-cards {
   display: flex;

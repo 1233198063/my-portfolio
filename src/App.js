@@ -25,6 +25,7 @@ import phone from "./images/phone.png";
 
 function App() {
   const [activeSection, setActiveSection] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
     const sections = document.querySelectorAll(".element");
@@ -59,34 +60,77 @@ function App() {
         <div className="logo">
           <span className="thin-span">Yuexin</span>Li
         </div>
-        <ul>
+        
+        {/* Hamburger menu button for mobile */}
+        <button 
+          className="hamburger-menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        {/* Navigation menu */}
+        <ul className={isMenuOpen ? "nav-menu open" : "nav-menu"}>
           <li>
-            <Link to="home" smooth={true} duration={500}>
+            <Link 
+              to="home" 
+              smooth={true} 
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="about" smooth={true} duration={500}>
+            <Link 
+              to="about" 
+              smooth={true} 
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
               About
             </Link>
           </li>
           <li>
-            <Link to="experience" smooth={true} duration={500}>
+            <Link 
+              to="experience" 
+              smooth={true} 
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
               Experience
             </Link>
           </li>
           <li>
-            <Link to="work" smooth={true} duration={500}>
-              Work
+            <Link 
+              to="work" 
+              smooth={true} 
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Projects
             </Link>
           </li>
           <li>
-            <Link to="skills" smooth={true} duration={500}>
+            <Link 
+              to="skills" 
+              smooth={true} 
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
               Skills
             </Link>
           </li>
           <li>
-            <Link to="contact" smooth={true} duration={500}>
+            <Link 
+              to="contact" 
+              smooth={true} 
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
               Contact
             </Link>
           </li>
@@ -160,6 +204,27 @@ function App() {
 
       <Element name="about" className="element about" data-section="about">
         <h1>About Me</h1>
+        
+        <div className="social-media">
+          <a
+            className="linkedin"
+            href="https://www.linkedin.com/in/yuexin-li-317401251/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="linkedin icon" />
+          </a>
+
+          <a 
+            className="github" 
+            href="https://github.com/1233198063"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="github icon" />
+          </a>
+        </div>
+
         <div className="about-cards">
           <div className="about-card">
             <div className="card-img">
@@ -222,6 +287,27 @@ function App() {
 
       <Element name="experience" className="element experience" data-section="experience">
         <h1>My Experience</h1>
+        
+        <div className="social-media">
+          <a
+            className="linkedin"
+            href="https://www.linkedin.com/in/yuexin-li-317401251/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="linkedin icon" />
+          </a>
+
+          <a 
+            className="github" 
+            href="https://github.com/1233198063"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="github icon" />
+          </a>
+        </div>
+
         <div className="experience-card">
           <div className="experience-header">
             <h3>SiriusMindShare LLC</h3>
@@ -243,7 +329,27 @@ function App() {
       </Element>
 
       <Element name="work" className="element work" data-section="work">
-        <h1>My Works</h1>
+        <h1>Projects</h1>
+
+        <div className="social-media">
+          <a
+            className="linkedin"
+            href="https://www.linkedin.com/in/yuexin-li-317401251/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="linkedin icon" />
+          </a>
+
+          <a 
+            className="github" 
+            href="https://github.com/1233198063"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="github icon" />
+          </a>
+        </div>
 
         <div className="browse-work">
           <a href="https://1233198063.github.io/vacation-web/" target="_blank">
@@ -305,6 +411,27 @@ function App() {
 
       <Element name="skills" className="element skills" data-section="skills">
         <h1>My Skills</h1>
+        
+        <div className="social-media">
+          <a
+            className="linkedin"
+            href="https://www.linkedin.com/in/yuexin-li-317401251/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="linkedin icon" />
+          </a>
+
+          <a 
+            className="github" 
+            href="https://github.com/1233198063"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="github icon" />
+          </a>
+        </div>
+
         <div className="skills-icons">
           <div className="skills-icon node-js">
             <div className="circle">
@@ -369,6 +496,27 @@ function App() {
         data-section="contact"
       >
         <h1>Contact Me</h1>
+        
+        <div className="social-media">
+          <a
+            className="linkedin"
+            href="https://www.linkedin.com/in/yuexin-li-317401251/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="linkedin icon" />
+          </a>
+
+          <a 
+            className="github" 
+            href="https://github.com/1233198063"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="github icon" />
+          </a>
+        </div>
+
         <div className="contact-cards">
           <div className="contact-card email-card">
             {/* <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Uniconlabs - Flaticon</a> */}
