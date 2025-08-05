@@ -388,7 +388,7 @@ function App() {
             </div>
           </a>
 
-          <a href="" target="_blank">
+          <a href="https://1233198063.github.io/online-shopping-web/" target="_blank">
             <div className="post">
               <div className="post-top">
                 <img src={shopProject} className="post-img"></img>
