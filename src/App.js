@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, Element } from "react-scroll";
 import "./styles/styles.css";
-import myPhoto from "./images/大证件照.jpg";
+import myPhoto from "./images/my-photo.png";
 import htmlLogo from "./images/css.png";
 import cssLogo from "./images/html.png";
 import jsLogo from "./images/js.png";
@@ -47,6 +47,8 @@ function App() {
     console.log(currentSection);
     setActiveSection(currentSection);
   };
+
+
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -139,16 +141,44 @@ function App() {
 
       {/* Right side dots */}
       <ul className="dot-nav">
-        <li className={activeSection === "home" ? "dot active" : "dot"}></li>
-        <li className={activeSection === "about" ? "dot active" : "dot"}></li>
-        <li className={activeSection === "experience" ? "dot active" : "dot"}></li>
-        <li className={activeSection === "work" ? "dot active" : "dot"}></li>
-        <li className={activeSection === "skills" ? "dot active" : "dot"}></li>
-        <li className={activeSection === "contact" ? "dot active" : "dot"}></li>
+        <li className={activeSection === "home" ? "dot active" : "dot"}>
+          <Link to="home" smooth={true} duration={500} />
+        </li>
+        <li className={activeSection === "about" ? "dot active" : "dot"}>
+          <Link to="about" smooth={true} duration={500} />
+        </li>
+        <li className={activeSection === "experience" ? "dot active" : "dot"}>
+          <Link to="experience" smooth={true} duration={500} />
+        </li>
+        <li className={activeSection === "work" ? "dot active" : "dot"}>
+          <Link to="work" smooth={true} duration={500} />
+        </li>
+        <li className={activeSection === "skills" ? "dot active" : "dot"}>
+          <Link to="skills" smooth={true} duration={500} />
+        </li>
+        <li className={activeSection === "contact" ? "dot active" : "dot"}>
+          <Link to="contact" smooth={true} duration={500} />
+        </li>
       </ul>
 
       {/* Home section */}
       <Element name="home" className="element home" data-section="home">
+        {/* High-tech Background */}
+        <div className="tech-background">
+          <div className="tech-line"></div>
+          <div className="tech-line"></div>
+          <div className="tech-line"></div>
+          <div className="tech-line"></div>
+
+          <div className="corner-lines top-left"></div>
+          <div className="corner-lines top-right"></div>
+          <div className="corner-lines bottom-left"></div>
+          <div className="corner-lines bottom-right"></div>
+
+          <div className="radar-circle"></div>
+          <div className="data-stream"></div>
+        </div>
+
         <h1 className="introduce">
           Hi, I'm Yuexin Li
           <span class="material-symbols-outlined">handshake</span>
