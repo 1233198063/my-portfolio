@@ -1,0 +1,313 @@
+.hero {
+  padding-top: clamp(3rem, 8vw, 7rem);
+  scroll-margin-top: var(--header-height);
+  overflow-x: clip; /* rotated collage cards must not create horizontal scroll on phones */
+}
+
+.hero__grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.hero__eyebrow {
+  margin-bottom: var(--space-5);
+}
+
+.hero__title {
+  font-size: var(--text-hero);
+  font-weight: 600;
+  line-height: 0.98;
+  max-width: 13ch;
+}
+
+/* Serif italic against the grotesque: the one moment of contrast in the headline */
+.hero__em {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap; /* keeps the marker under one unbroken line */
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em;
+  letter-spacing: -0.01em;
+  color: var(--color-charcoal);
+  isolation: isolate; /* lets the marker sit behind the text but above the page */
+}
+
+/* Hand-drawn marker: uneven rounded ends, slight tilt, overshoots the words a little */
+.hero__em::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.05em;
+  right: -0.08em;
+  bottom: 0.13em;
+  height: 0.3em;
+  background: var(--color-accent);
+  border-radius: 0.22em 0.12em 0.2em 0.16em / 0.16em 0.14em 0.15em 0.18em;
+  transform: rotate(-1.1deg);
+  transform-origin: left center;
+}
+
+.hero__lede {
+  max-width: 46ch;
+  margin-top: var(--space-6);
+  font-size: var(--text-lg);
+  color: var(--color-ink-soft);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+/* ---------- Project collage ---------- */
+.hero__art {
+  position: relative;
+  width: min(100%, 30rem);
+  aspect-ratio: 1 / 1.02;
+  justify-self: start;
+}
+
+.hc {
+  position: absolute;
+  box-shadow: 6px 6px 0 var(--color-sage-wash);
+}
+
+.hc--map {
+  top: 0;
+  right: 0;
+  width: 72%;
+  background: var(--color-sage-wash);
+  rotate: 3deg;
+  box-shadow: 6px 6px 0 var(--color-accent-wash);
+}
+
+.hc--workspace {
+  left: 0;
+  bottom: 6%;
+  width: 82%;
+  rotate: -2deg;
+}
+
+.hc--map svg {
+  width: 100%;
+  padding: 10px 10px 0;
+}
+
+.hc__ghost,
+.hc__route {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.hc__ghost {
+  stroke: var(--color-charcoal);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 6;
+  opacity: 0.5;
+}
+
+.hc__route {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+  stroke-dasharray: 1;
+}
+
+.hc__node {
+  fill: var(--color-paper);
+  stroke: var(--color-charcoal);
+  stroke-width: 1.8;
+}
+
+.hc__node--on {
+  fill: var(--color-accent);
+  stroke: var(--color-charcoal);
+}
+
+.hc__caption {
+  display: grid;
+  gap: 6px;
+  padding: 10px 14px 14px;
+  border-top: 1.5px solid var(--color-charcoal);
+  background: var(--color-paper);
+}
+
+.hc__body {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+}
+
+.hc__queue {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding: 10px 8px;
+  border-right: 1.5px solid var(--color-line-strong);
+}
+
+.hc__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.hc__row.is-on {
+  background: var(--color-sage-wash);
+}
+
+.hc__dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-sage);
+}
+
+.hc__row.is-on .hc__dot {
+  background: var(--color-accent);
+}
+
+.hc__detail {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+}
+
+.hc__draft {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 10px;
+  border: 1.5px dashed var(--color-accent-ink);
+  border-radius: var(--radius-md);
+  background: var(--color-ivory);
+}
+
+.hc__button {
+  justify-self: start;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.hero__caption {
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-soft);
+}
+
+.hero__facts {
+  display: grid;
+  gap: var(--space-5);
+  margin: clamp(3rem, 7vw, 6rem) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line-strong);
+}
+
+.hero__facts dd {
+  margin: var(--space-1) 0 0;
+}
+
+.hero__facts a {
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .hero__facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+
+  .hero__art {
+    justify-self: end;
+  }
+}
+
+/* Motion: staggered headline, marker swipe, route draw, pointer parallax */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__eyebrow,
+  .hero__lede,
+  .hero__actions {
+    animation: hero-rise var(--duration-slow) var(--ease-out) both;
+  }
+
+  .hero__eyebrow { animation-delay: 0ms; }
+  .hero__lede { animation-delay: 550ms; }
+  .hero__actions { animation-delay: 650ms; }
+
+  /* Words rise one after another; --i is set per word in Hero.js */
+  .hero__word {
+    display: inline-block;
+    animation: hero-word 900ms var(--ease-out) both;
+    animation-delay: calc(120ms + var(--i, 0) * 90ms);
+  }
+
+  /* The marker swipes across after the words have landed */
+  .hero__em::before {
+    animation: hero-swipe 800ms var(--ease-out) 1000ms both;
+  }
+
+  /* Cards slide in from opposite sides, then the map route draws itself */
+  .hc--map { animation: hc-in-right 900ms var(--ease-out) 350ms both; }
+  .hc--workspace { animation: hc-in-left 900ms var(--ease-out) 500ms both; }
+
+  .hc__route {
+    stroke-dashoffset: 1;
+    animation: hero-draw 1400ms var(--ease-out) 1000ms forwards;
+  }
+
+  /* Pointer parallax: --px / --py come from usePointerParallax. Cards use the
+     individual `translate` property so it never fights their entrance transform. */
+  .hc {
+    translate: calc(var(--px, 0) * var(--depth, 12) * -1px) calc(var(--py, 0) * var(--depth, 12) * -1px);
+    transition: translate 500ms var(--ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc__route {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(0.45em); }
+}
+
+@keyframes hero-swipe {
+  from { transform: rotate(-1.1deg) scaleX(0); }
+}
+
+@keyframes hero-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes hc-in-right {
+  from { opacity: 0; transform: translate(40px, -16px); }
+}
+
+@keyframes hc-in-left {
+  from { opacity: 0; transform: translate(-40px, 20px); }
+}

@@ -1,0 +1,65 @@
+/*
+  Design tokens — the single source of truth for color, type, space and motion.
+  Components must consume these variables and never hard-code values.
+*/
+:root {
+  /* Color: warm ivory / charcoal / muted sage, with a cool cobalt accent */
+  --color-ivory: #f7f2e8; /* page background */
+  --color-paper: #fcf9f2; /* raised surfaces */
+  --color-sand: #ebe3d2; /* quiet fills */
+  --color-line: rgba(37, 35, 31, 0.16);
+  --color-line-strong: rgba(37, 35, 31, 0.4);
+
+  --color-charcoal: #25231f; /* primary text (14:1 on ivory) */
+  --color-ink-soft: #57534b; /* secondary text (6.9:1) */
+
+  --color-sage: #9aa893; /* decorative only */
+  --color-sage-wash: #dde3d5;
+  --color-sage-deep: #4f6349; /* text-safe sage (5.9:1) */
+
+  --color-accent: #f2a20c; /* marigold: fills, highlights, marks. NOT for text on ivory (1.9:1) */
+  --color-accent-light: #f7c548; /* decorative, and text on charcoal (9:1) */
+  --color-accent-wash: #fbe6b0;
+  --color-accent-ink: #8f5f00; /* text-safe mustard for small type (4.95:1 on ivory) */
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif; /* headlines */
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif; /* italic emphasis only */
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.15rem, 1.05rem + 0.5vw, 1.375rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.4rem + 3vw, 3.75rem);
+  --text-hero: clamp(2.75rem, 1.2rem + 5vw, 6rem);
+
+  /* Space (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-section: clamp(4.5rem, 3rem + 8vw, 10rem);
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 3rem);
+  --header-height: 4.25rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
+}

@@ -1,0 +1,81 @@
+/* Shared frame and primitives for the interactive project demos (see Demos.css) */
+.mock {
+  border: 1.5px solid var(--color-charcoal);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper);
+  overflow: hidden;
+  box-shadow: 8px 8px 0 var(--color-sage-wash);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.project:hover .mock {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0 var(--color-sage-wash);
+}
+
+.mock__bar {
+  display: flex;
+  gap: 6px;
+  padding: 12px 16px;
+  border-bottom: 1.5px solid var(--color-charcoal);
+  background: var(--color-sand);
+}
+
+.mock__bar i {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--color-charcoal);
+  border-radius: 50%;
+}
+
+.mock__line {
+  display: block;
+  height: 8px;
+  width: 100%;
+  border-radius: 4px;
+  background: var(--color-line-strong);
+  opacity: 0.55;
+}
+
+.mock__line--title {
+  height: 12px;
+  width: 55%;
+  opacity: 0.9;
+}
+
+.mock__line--short {
+  width: 62%;
+}
+
+.mock__pill {
+  justify-self: start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.mock__pill--sage {
+  background: var(--color-sage-wash);
+  color: var(--color-sage-deep);
+}
+
+.mock__pill--accent {
+  background: var(--color-accent-wash);
+  color: var(--color-charcoal);
+}
+
+.mock__pill--muted {
+  background: var(--color-sand);
+  color: var(--color-ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mock,
+  .project:hover .mock {
+    transition: none;
+    transform: none;
+  }
+}

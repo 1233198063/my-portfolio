@@ -1,0 +1,74 @@
+.about {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.about__statement {
+  margin-top: var(--space-4);
+  max-width: 24ch;
+  font-size: var(--text-xl);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.about__side {
+  display: grid;
+  gap: var(--space-7);
+  align-content: start;
+}
+
+.principles {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.principles li {
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--color-sage);
+  color: var(--color-ink-soft);
+}
+
+.principles__title {
+  margin-bottom: var(--space-1);
+  font-size: var(--text-lg);
+  color: var(--color-charcoal);
+}
+
+.about__toolkit-label {
+  margin-bottom: var(--space-3);
+}
+
+.skills {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+}
+
+.skills dt {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.skills dd {
+  margin: 0;
+}
+
+.toolkit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (min-width: 960px) {
+  .about {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .about__statement {
+    font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+    max-width: 22ch;
+  }
+}

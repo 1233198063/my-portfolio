@@ -1,0 +1,29 @@
+import { useEffect, useState } from "react";
+
+// Tracks which section crosses a thin band at the middle of the viewport.
+// IntersectionObserver replaces the old scroll listener (no per-scroll layout reads).
+export default function useActiveSection(ids) {
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [ids]);
+
+  return active;
+}

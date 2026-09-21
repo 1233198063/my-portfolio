@@ -1,0 +1,240 @@
+/* Reset, typography, layout primitives, shared components */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-optical-sizing: auto;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-accent-wash);
+  color: var(--color-charcoal);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-charcoal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Layout */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-pad, var(--space-section));
+  scroll-margin-top: var(--header-height);
+}
+
+.section--tinted {
+  background: var(--color-paper);
+  border-block: 1px solid var(--color-line);
+}
+
+/* Small uppercase label used across sections */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.eyebrow b {
+  font-weight: 500;
+  color: var(--color-accent-ink);
+}
+
+.section-head {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+
+.section-head h2 {
+  font-size: var(--text-2xl);
+  max-width: 18ch;
+}
+
+/* Buttons & links */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid var(--color-charcoal);
+  border-radius: 999px;
+  background: transparent;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease,
+    transform var(--duration-base) var(--ease-out);
+}
+
+.button:hover {
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+}
+
+.button--solid {
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+}
+
+.button--solid:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-charcoal); /* charcoal on marigold: 7.4:1 */
+}
+
+.button__arrow {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.button:hover .button__arrow,
+.link-arrow:hover .button__arrow {
+  transform: translateX(4px);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-soft);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+  border-radius: var(--radius-sm);
+  transition: top var(--duration-fast) ease;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Scroll reveal — hidden state only exists when motion is welcome */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .reveal {
+    transition: opacity var(--duration-slow) var(--ease-out),
+      transform var(--duration-slow) var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Safety net: any motion not already gated above is neutralised for users who ask for less */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
