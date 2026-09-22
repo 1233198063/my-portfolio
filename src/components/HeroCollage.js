@@ -50,8 +50,6 @@ export default function HeroCollage() {
           </div>
         </div>
       </div>
-
-      <figcaption className="hero__caption">Fig. 1 — selected work, in miniature</figcaption>
     </figure>
   );
 }

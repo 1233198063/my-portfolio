@@ -1,5 +1,6 @@
 import WorkspaceDemo from "./WorkspaceDemo";
 import CareerMapDemo from "./CareerMapDemo";
+import ImageAnalysisDemo from "./ImageAnalysisDemo";
 import "./WorkMock.css";
 
 // Project visuals are small interactive demos drawn in code (no screenshots yet).
@@ -7,6 +8,7 @@ import "./WorkMock.css";
 const visuals = {
   workspace: WorkspaceDemo,
   map: CareerMapDemo,
+  analysis: ImageAnalysisDemo,
 };
 
 export default function ProjectVisual({ name }) {

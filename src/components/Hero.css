@@ -200,15 +200,6 @@
   font-weight: 500;
 }
 
-.hero__caption {
-  position: absolute;
-  left: 0;
-  bottom: -0.5rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-ink-soft);
-}
-
 .hero__facts {
   display: grid;
   gap: var(--space-5);

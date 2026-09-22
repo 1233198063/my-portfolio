@@ -5,6 +5,9 @@
 // Project entries with `href: null` render as "Case study in progress"
 // instead of a dead link. Set `href` once a case study or demo is live.
 
+// Springer paper this platform's OCR pipeline contributed to (also shown under Education & research).
+const PAPER_DOI = "10.1007/978-981-92-1546-1_29";
+
 export const profile = {
   name: "Yuexin Li",
   role: "Design Engineer",
@@ -60,6 +63,28 @@ export const featuredProjects = [
     tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "REST APIs"],
     href: null,
   },
+  {
+    id: "image-analysis",
+    visual: "analysis",
+    title: "AI Image Analysis Platform",
+    org: "SiriusMindShare LLC",
+    period: "Feb. 2025 – Nov. 2025",
+    summary:
+      "A full-stack platform productized from a Python research pipeline: batch ingestion, searchable results, analytics and exportable reports.",
+    stats: [
+      { value: "~70%", label: "less repetitive analysis work (approx.)" },
+      { value: "20+", label: "RESTful endpoints" },
+      { value: "90%+", label: "OCR accuracy" },
+    ],
+    highlights: [
+      "Drag-and-drop batch ingestion with batch controls, system status, interactive analytics and reporting in React and TypeScript",
+      "Modular FastAPI services: 20+ RESTful endpoints and relational MySQL schemas for ingestion, parallel analysis and retrieval",
+      "Hybrid OCR (Tesseract, EasyOCR) with OpenCV preprocessing, evaluated on 720 images from 144 online shops",
+    ],
+    tags: ["React", "TypeScript", "FastAPI", "MySQL", "Python"],
+    href: `https://doi.org/${PAPER_DOI}`,
+    linkLabel: "Read the related paper",
+  },
 ];
 
 // Generic stops for the interactive map demo. They mirror what the platform
@@ -72,22 +97,6 @@ export const careerMapStops = [
   { label: "Next step", text: "Get personalized guidance on what to do next." },
   { label: "Goal", text: "The role you are working toward." },
 ];
-
-export const additionalProject = {
-  id: "image-analysis",
-  title: "AI Image Analysis Platform",
-  org: "SiriusMindShare LLC",
-  period: "Feb. 2025 – Nov. 2025",
-  summary:
-    "A full-stack platform productized from a Python research pipeline: batch ingestion, searchable results, analytics and exportable reports.",
-  stats: [
-    { value: "~70%", label: "less repetitive analysis work (approx.)" },
-    { value: "20+", label: "RESTful endpoints" },
-    { value: "90%+", label: "OCR accuracy" },
-  ],
-  tags: ["React", "TypeScript", "FastAPI", "MySQL", "Python"],
-  href: null,
-};
 
 export const experience = [
   {
@@ -145,7 +154,7 @@ export const publication = {
     "How Stylize Transfer Enhances the Visibility of Storefronts with Modified Attention",
   venue:
     "Machine Learning and Soft Computing: ICMLSC 2026 Revised Selected Papers, Springer Nature, CCIS 2948, pp. 349–361",
-  doi: "10.1007/978-981-92-1546-1_29",
+  doi: PAPER_DOI,
 };
 
 export const about = {

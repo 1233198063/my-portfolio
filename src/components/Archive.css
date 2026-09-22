@@ -16,15 +16,40 @@
   grid-template-columns: 1fr auto;
   gap: var(--space-1) var(--space-4);
   align-items: baseline;
-  padding: var(--space-4) 0;
+  /* Inset the row so its highlight can reach past the text edge while the text stays on the grid */
+  margin-inline: calc(var(--space-3) * -1);
+  padding: var(--space-4) var(--space-3);
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: padding var(--duration-base) var(--ease-out), color var(--duration-fast) ease;
+  transition: background-color var(--duration-base) ease;
 }
 
-.archive__list a:hover {
-  padding-left: var(--space-3);
-  color: var(--color-charcoal);
-  background: linear-gradient(transparent 62%, var(--color-accent) 62%);
+/* Whole-row highlight in the lighter marigold wash */
+.archive__list a:hover,
+.archive__list a:focus-visible {
+  background-color: var(--color-accent-wash);
+}
+
+.archive__list a:hover .button__arrow,
+.archive__list a:focus-visible .button__arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Title and tech stack slide right together on hover. transform, not padding, so nothing reflows. */
+.archive__name,
+.archive__tech {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.archive__tech {
+  transition-delay: 40ms; /* trails the title slightly */
+}
+
+.archive__list a:hover .archive__name,
+.archive__list a:focus-visible .archive__name,
+.archive__list a:hover .archive__tech,
+.archive__list a:focus-visible .archive__tech {
+  transform: translateX(var(--space-3));
 }
 
 .archive__name {
@@ -60,11 +85,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .archive__list a {
+  .archive__list a,
+  .archive__list .button__arrow,
+  .archive__name,
+  .archive__tech {
     transition: none;
   }
 
-  .archive__list a:hover {
-    padding-left: 0;
+  .archive__list a:hover .archive__name,
+  .archive__list a:focus-visible .archive__name,
+  .archive__list a:hover .archive__tech,
+  .archive__list a:focus-visible .archive__tech {
+    transform: none;
   }
 }

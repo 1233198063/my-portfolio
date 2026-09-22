@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within, fireEvent, act } from '@testing-library/react';
 import App from './App';
 
 test('renders the hero heading and primary landmarks', () => {
@@ -49,4 +49,30 @@ test('shows education and links the publication by DOI', () => {
     'href',
     'https://doi.org/10.1007/978-981-92-1546-1_29'
   );
+});
+
+test('image analysis demo runs a batch, is searchable and can export', () => {
+  jest.useFakeTimers();
+  render(<App />);
+  const demo = screen.getByRole('list', { name: /image batch/i }).closest('.demo');
+
+  fireEvent.click(within(demo).getByRole('button', { name: /run batch/i }));
+  // Each image schedules the next timer from an effect, so advance one step per act().
+  for (let i = 0; i < 4; i += 1) {
+    act(() => { jest.advanceTimersByTime(800); });
+  }
+  expect(within(demo).getByRole('status')).toHaveTextContent(/batch complete/i);
+
+  fireEvent.change(within(demo).getByRole('searchbox'), { target: { value: 'luna' } });
+  expect(within(demo).getAllByRole('listitem')).toHaveLength(1);
+
+  fireEvent.click(within(demo).getByRole('button', { name: /export report/i }));
+  expect(within(demo).getByRole('status')).toHaveTextContent(/report\.csv ready/i);
+  jest.useRealTimers();
+});
+
+test('projects without a public link show no placeholder text', () => {
+  render(<App />);
+  expect(screen.queryByText(/case study in progress/i)).not.toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /read the related paper/i })).toBeInTheDocument();
 });

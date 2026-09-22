@@ -1,17 +1,15 @@
-import { featuredProjects, additionalProject } from "../data/content";
+import { featuredProjects } from "../data/content";
 import Reveal from "./Reveal";
 import ProjectVisual from "./ProjectVisuals";
 import Stats from "./Stats";
 import "./Work.css";
 
-// A project without a live link shows an honest status instead of a dead anchor.
-function ProjectLink({ href, title }) {
-  if (!href) {
-    return <p className="project__status">Case study in progress</p>;
-  }
+// Projects without a public link show nothing rather than a dead anchor or a "coming soon" note.
+function ProjectLink({ href, label }) {
+  if (!href) return null;
   return (
     <a className="link-arrow" href={href} target="_blank" rel="noopener noreferrer">
-      View {title} <span className="button__arrow" aria-hidden="true">→</span>
+      {label} <span className="button__arrow" aria-hidden="true">→</span>
     </a>
   );
 }
@@ -47,7 +45,7 @@ function FeaturedProject({ project, index }) {
             <li key={tag} className="tag">{tag}</li>
           ))}
         </ul>
-        <ProjectLink href={project.href} title={project.title} />
+        <ProjectLink href={project.href} label={project.linkLabel ?? `View ${project.title}`} />
       </div>
     </Reveal>
   );
@@ -67,22 +65,6 @@ export default function Work() {
             <FeaturedProject key={project.id} project={project} index={index} />
           ))}
         </div>
-
-        <Reveal as="article" className="also" aria-labelledby="also-title">
-          <p className="eyebrow">Also</p>
-          <div className="also__body">
-            <h3 id="also-title" className="also__title">{additionalProject.title}</h3>
-            <p className="project__meta">{additionalProject.org} · {additionalProject.period}</p>
-            <p className="also__summary">{additionalProject.summary}</p>
-            <Stats items={additionalProject.stats} className="stats--inline" />
-            <ul className="project__tags" aria-label="Technologies">
-              {additionalProject.tags.map((tag) => (
-                <li key={tag} className="tag">{tag}</li>
-              ))}
-            </ul>
-          </div>
-          <ProjectLink href={additionalProject.href} title={additionalProject.title} />
-        </Reveal>
       </div>
     </section>
   );

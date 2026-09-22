@@ -8,7 +8,8 @@ const easeOutCubic = (t) => 1 - (1 - t) ** 3;
 const tokenize = (value) => value.split(/(\d+(?:\.\d+)?)/);
 
 // Counts every number inside `value` up from zero once it scrolls into view.
-// Screen readers get the final value immediately; the animated text is hidden from them.
+// role="img" + aria-label gives assistive tech the final value at once, and there is
+// no second hidden copy of the text, so selecting and copying yields the value once.
 function CountUp({ value }) {
   const reduced = usePrefersReducedMotion();
   const ref = useRef(null);
@@ -50,10 +51,9 @@ function CountUp({ value }) {
     .join("");
 
   return (
-    <>
-      <span ref={ref} aria-hidden="true">{shown}</span>
-      <span className="sr-only">{value}</span>
-    </>
+    <span ref={ref} role="img" aria-label={value}>
+      {shown}
+    </span>
   );
 }
 

@@ -44,13 +44,17 @@
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5) var(--space-7);
+  /* Top-align every stat. The default (stretch) made short-labelled stats taller, and since
+     their content packs to the bottom (column-reverse) the numbers ended up at different heights. */
+  align-items: flex-start;
+  gap: var(--space-5);
   margin: var(--space-5) 0 0;
 }
 
 .stat {
   display: flex;
   flex-direction: column-reverse; /* value first visually, term first in the DOM */
+  min-width: 6.5rem;
 }
 
 .stat__value {
@@ -70,19 +74,11 @@
 }
 
 .stat__label {
-  max-width: 13rem;
+  max-width: 9.5rem;
   margin-top: var(--space-2);
   font-size: var(--text-sm);
   line-height: 1.4;
   color: var(--color-ink-soft);
-}
-
-.stats--inline {
-  margin: 0 0 var(--space-5);
-}
-
-.stats--inline .stat__value {
-  font-size: var(--text-xl);
 }
 
 .project__summary {
@@ -122,14 +118,6 @@
   margin-bottom: var(--space-5);
 }
 
-.project__status {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-soft);
-}
-
 @media (min-width: 960px) {
   .project {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
@@ -142,37 +130,5 @@
 
   .project--flip .project__visual {
     order: 2;
-  }
-}
-
-/* Additional project: quieter, single row */
-.also {
-  display: grid;
-  gap: var(--space-4);
-  margin-top: clamp(4rem, 9vw, 8rem);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-line-strong);
-}
-
-.also__title {
-  margin-bottom: var(--space-3);
-  font-size: var(--text-xl);
-}
-
-.also__summary {
-  max-width: 52ch;
-  margin-bottom: var(--space-4);
-  color: var(--color-ink-soft);
-}
-
-.also .project__tags {
-  margin-bottom: 0;
-}
-
-@media (min-width: 960px) {
-  .also {
-    grid-template-columns: 12rem minmax(0, 1fr) auto;
-    align-items: start;
-    gap: var(--space-6);
   }
 }
