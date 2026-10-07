@@ -55,7 +55,7 @@
   color: var(--color-light-ink);
 }
 
-/* Sunset: a wide glow along the horizon and the half-set disk of the sun */
+/* Sunset: a wide glow along the horizon and the sun, blurred into the haze so it stays background */
 .contact__sun {
   position: absolute;
   left: 50%;
@@ -69,8 +69,8 @@
 .contact__sun::before {
   content: "";
   position: absolute;
-  inset: -70% -140% 0;
-  background: radial-gradient(ellipse 50% 38% at 50% 70%, var(--sunset-glow), transparent 70%);
+  inset: -60% -140% 0;
+  background: radial-gradient(ellipse 50% 36% at 50% 74%, var(--sunset-glow), transparent 70%);
 }
 
 .contact__sun::after {
@@ -78,18 +78,16 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  /* Pale gold heart warming to vermilion at the rim; the glow, not the gradient, softens the edge */
+  /* Pale gold heart fading to amber, then to nothing: no rim, no hard edge */
   background: radial-gradient(
     circle closest-side,
-    var(--sunset-core) 0 34%,
-    color-mix(in srgb, var(--sunset-core) 55%, var(--sunset-mid)) 72%,
-    var(--sunset-mid) 100%
+    var(--sunset-core) 0 30%,
+    color-mix(in srgb, var(--sunset-core) 50%, var(--sunset-mid)) 66%,
+    transparent 100%
   );
-  box-shadow:
-    0 0 40px 2px color-mix(in srgb, var(--sunset-mid) 55%, transparent),
-    0 0 140px 30px var(--sunset-glow);
+  filter: blur(clamp(16px, 2.6vw, 34px));
   transform: translateY(50%);
-  opacity: 0.85;
+  opacity: 0.55;
 }
 
 /* As the section scrolls in, the sun sinks to the horizon */
@@ -115,7 +113,7 @@
 
 .site-footer {
   padding-block: var(--space-6);
-  border-top: 1px solid color-mix(in srgb, var(--sunset-core) 45%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--sunset-core) 22%, transparent);
   /* The sun's reflection on the water */
   background: radial-gradient(ellipse min(14vw, 9rem) 100% at 50% 0%, var(--sunset-glow), transparent);
   color: var(--color-text-faint);

@@ -67,12 +67,14 @@
   --swallow-rim: rgba(244, 217, 160, 0.9);
   --swallow-feather: rgba(244, 217, 160, 0.32);
   --swallow-mark: #d0503c;
+  --swallow-belly: #e6d8bb; /* side view: the pale underside */
+  --swallow-eye: #f4d9a0;
   --swallow-shadow: drop-shadow(0 0 3px rgba(232, 178, 90, 0.5));
 
-  /* Closing sunset */
-  --sunset-core: #f0b765;
-  --sunset-mid: #b83a2b;
-  --sunset-glow: rgba(184, 58, 43, 0.35);
+  /* Closing sunset: a warm glow low in the haze, amber rather than red */
+  --sunset-core: #ecc07e;
+  --sunset-mid: #b0643a;
+  --sunset-glow: rgba(196, 122, 66, 0.16);
 }
 
 :root[data-theme="light"] {
@@ -128,11 +130,14 @@
   --swallow-rim: rgba(255, 250, 238, 0.95);
   --swallow-feather: rgba(255, 250, 238, 0.4);
   --swallow-mark: #a8321f;
+  --swallow-belly: #fbf4e4;
+  --swallow-eye: #fff8e6;
   --swallow-shadow: drop-shadow(0 2px 2px rgba(60, 40, 10, 0.3));
 
-  --sunset-core: #f6cf86;
-  --sunset-mid: #d9982f;
-  --sunset-glow: rgba(217, 152, 47, 0.3);
+  /* On the light ground a pale core would read as a ring, so the glow is one even warm gold */
+  --sunset-core: #f2c97e;
+  --sunset-mid: #efc278;
+  --sunset-glow: rgba(217, 152, 47, 0.16);
 }
 
 :root {

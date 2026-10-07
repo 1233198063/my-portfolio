@@ -24,7 +24,8 @@ function App() {
         <Archive />
       </main>
       <Contact />
-      <SwallowCursor />
+      {/* view="side" is the swallow in profile; view="top" is the earlier view from above */}
+      <SwallowCursor view="side" />
     </>
   );
 }

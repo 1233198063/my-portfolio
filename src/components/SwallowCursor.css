@@ -29,6 +29,11 @@ html.has-swallow.is-switching-theme * {
   transition: opacity var(--duration-fast) ease;
 }
 
+/* The profile is slimmer than the view from above, so it is drawn a little larger */
+.swallow--side {
+  --u: 1.02px;
+}
+
 html.has-swallow .swallow {
   display: block;
 }
@@ -86,13 +91,51 @@ html.is-switching-theme .swallow {
   fill: var(--swallow-mark);
 }
 
-/* Wings scale toward the body's axis (the drawing's y = 0) to fold and beat */
-.swallow__wings {
+.swallow__belly {
+  fill: var(--swallow-belly);
+}
+
+.swallow__eye {
+  fill: var(--swallow-eye);
+}
+
+/* Top view: wings scale toward the body's axis (the drawing's y = 0) to fold and beat */
+.swallow--top .swallow__wings {
   transition: transform 260ms var(--ease-out);
 }
 
-.swallow.is-pointer .swallow__wings {
+.swallow--top.is-pointer .swallow__wings {
   transform: scaleY(0.74);
+}
+
+/* Side view: each wing rotates about its shoulder (its own origin in the drawing).
+   Gliding, the near wing is lifted a little and the far wing shows above it. */
+.swallow--side .swallow__wing {
+  transform: rotate(8deg);
+  transition: transform 300ms var(--ease-out);
+}
+
+.swallow--side .swallow__wing--far {
+  transform: rotate(24deg);
+}
+
+.swallow__fill .swallow__wing--far {
+  opacity: 0.8;
+}
+
+/* A faint edge separates the near wing from the dark back it lies over */
+.swallow__fill .swallow__wing--near {
+  stroke: var(--swallow-feather);
+  stroke-width: 0.45;
+}
+
+/* Over something clickable the wings fold back along the body */
+.swallow--side.is-pointer .swallow__wing {
+  transform: rotate(-8deg);
+}
+
+.swallow--side.is-pointer .swallow__wing--far {
+  transform: rotate(4deg);
 }
 
 /* Over something clickable, a spark of light at the beak marks where the click lands */
@@ -114,12 +157,31 @@ html.is-switching-theme .swallow {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .swallow.is-flying .swallow__wings {
+  .swallow--top.is-flying .swallow__wings {
     animation: swallow-flap 300ms ease-in-out infinite;
+  }
+
+  .swallow--side.is-flying .swallow__wing--near {
+    animation: swallow-flap-near 280ms ease-in-out infinite;
+  }
+
+  .swallow--side.is-flying .swallow__wing--far {
+    animation: swallow-flap-far 280ms ease-in-out infinite;
   }
 }
 
 @keyframes swallow-flap {
   0%, 100% { transform: scaleY(1); }
   50% { transform: scaleY(0.32); }
+}
+
+/* Upstroke to about 40 degrees, downstroke to below the body line */
+@keyframes swallow-flap-near {
+  0%, 100% { transform: rotate(40deg); }
+  50% { transform: rotate(-24deg); }
+}
+
+@keyframes swallow-flap-far {
+  0%, 100% { transform: rotate(52deg); }
+  50% { transform: rotate(-6deg); }
 }
