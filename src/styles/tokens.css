@@ -36,14 +36,15 @@
   --color-focal: #b83a2b; /* vermilion: marks and fills only */
 
   /* Atmosphere layers (see Atmosphere.js) */
-  --beam-rgb: 232, 178, 90;
-  --beam-alpha: 0.075;
+  /* Pale warm light: saturated gold at a few percent over ink reads as brown streaks */
+  --beam-rgb: 250, 222, 176;
+  --beam-alpha: 0.05;
   --mist-a: rgba(232, 178, 90, 0.07);
   --mist-b: rgba(47, 74, 69, 0.28);
   --dust-rgb: 244, 217, 160;
   --grain-opacity: 0.06;
   --spot-alpha: 0.07;
-  --ray-alpha: 0.12;
+  --ray-alpha: 0.07;
   --shadow-lift: 0 40px 80px -40px rgba(0, 0, 0, 0.75);
 
   /* Hero window scene: dusk over water */
@@ -152,7 +153,7 @@
   --text-lg: clamp(1.15rem, 1.05rem + 0.5vw, 1.375rem);
   --text-xl: clamp(1.625rem, 1.3rem + 1.4vw, 2.375rem);
   --text-2xl: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
-  --text-hero: clamp(2.75rem, 1.3rem + 5vw, 6.25rem);
+  --text-hero: clamp(2.75rem, 1.3rem + 4.6vw, 5.875rem); /* keeps "Interfaces that make" on one line in the hero column */
 
   /* Space (4px base, generous rhythm) */
   --space-1: 0.25rem;

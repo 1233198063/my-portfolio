@@ -40,6 +40,12 @@ const GLINTS = (() => {
   return strokes;
 })();
 
+// Rays around the window: [angle in degrees, strength 0..1, length in rem]. Uneven on purpose.
+const RAYS = [
+  [9, 1, 17], [31, 0.55, 14], [52, 0.8, 16], [83, 1, 19], [107, 0.5, 13], [140, 0.9, 17], [174, 0.6, 15],
+  [204, 1, 18], [231, 0.5, 13], [257, 0.85, 16], [291, 0.6, 14], [321, 1, 18], [347, 0.5, 13],
+];
+
 // Three birds at different distances. `rest` is where each one waits when motion is reduced.
 const BIRDS = [
   { y: 120, scale: 1, duration: "46s", delay: "-15s", flap: "1.7s", rest: 236 },
@@ -55,7 +61,15 @@ export default function HeroAperture() {
   return (
     <figure className="aperture" aria-hidden="true">
       <div className="aperture__halo" />
-      <div className="aperture__rays" style={{ "--depth": -10 }} />
+      <div className="aperture__rays" style={{ "--depth": -10 }}>
+        {RAYS.map(([angle, strength, length]) => (
+          <span
+            key={angle}
+            className="aperture__ray"
+            style={{ "--a": `${angle}deg`, "--k": strength, "--len": `${length}rem` }}
+          />
+        ))}
+      </div>
 
       <svg className="aperture__scene" viewBox="0 0 400 540" focusable="false">
         <defs>

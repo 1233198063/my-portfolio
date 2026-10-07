@@ -118,47 +118,32 @@
   opacity: 0.55;
 }
 
-/* Rays fanning out from the sun, visible only outside the window (the scene covers the inside) */
+/* Rays fanning out from the sun, visible only outside the window (the scene covers the inside).
+   Each ray is its own elongated radial gradient. A conic gradient under a radial mask looked the
+   same in theory, but at these faint alphas the multiplied result breaks into blotchy patches. */
 .aperture__rays {
   position: absolute;
   left: 50%;
   top: 59.6%; /* the sun's height in the drawing: 322 / 540 */
-  width: 280%;
-  aspect-ratio: 1;
-  margin: -140% 0 0 -140%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg 6deg,
-    rgba(var(--beam-rgb), var(--ray-alpha)) 9deg,
-    transparent 12deg 27deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.55)) 31deg,
-    transparent 36deg 50deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.8)) 52deg,
-    transparent 54deg 78deg,
-    rgba(var(--beam-rgb), var(--ray-alpha)) 83deg,
-    transparent 89deg 104deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.5)) 107deg,
-    transparent 110deg 136deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.9)) 140deg,
-    transparent 145deg 170deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.6)) 174deg,
-    transparent 177deg 199deg,
-    rgba(var(--beam-rgb), var(--ray-alpha)) 204deg,
-    transparent 209deg 228deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.5)) 231deg,
-    transparent 233deg 252deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.85)) 257deg,
-    transparent 262deg 287deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.6)) 291deg,
-    transparent 294deg 316deg,
-    rgba(var(--beam-rgb), var(--ray-alpha)) 321deg,
-    transparent 326deg 343deg,
-    rgba(var(--beam-rgb), calc(var(--ray-alpha) * 0.5)) 347deg,
-    transparent 350deg
-  );
-  -webkit-mask-image: radial-gradient(circle, #000 8%, rgba(0, 0, 0, 0.5) 22%, transparent 48%);
-  mask-image: radial-gradient(circle, #000 8%, rgba(0, 0, 0, 0.5) 22%, transparent 48%);
+  width: 0;
+  height: 0;
   pointer-events: none;
+}
+
+.aperture__ray {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.25rem;
+  height: var(--len);
+  margin-left: -1.125rem;
+  transform-origin: 50% 0;
+  transform: rotate(var(--a));
+  background: radial-gradient(
+    ellipse 50% 100% at 50% 0%,
+    rgba(var(--beam-rgb), calc(var(--ray-alpha) * var(--k))),
+    transparent
+  );
 }
 
 /* Scene pieces: colors come from the --scene-* tokens so dusk and dawn share one drawing */
