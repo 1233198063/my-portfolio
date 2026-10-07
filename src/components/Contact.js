@@ -6,9 +6,10 @@ export default function Contact() {
   return (
     <>
       <section id="contact" className="section contact" aria-labelledby="contact-title">
+        <div className="contact__sun" aria-hidden="true" />
         <div className="container">
           <Reveal>
-            <p className="eyebrow contact__eyebrow">Contact</p>
+            <p className="eyebrow eyebrow--mark contact__eyebrow">Contact</p>
             <h2 id="contact-title" className="contact__title">
               Let&rsquo;s build something <em>thoughtful</em>.
             </h2>

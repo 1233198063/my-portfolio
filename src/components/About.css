@@ -1,42 +1,55 @@
 .about {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-8);
 }
 
 .about__statement {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
   max-width: 24ch;
   font-size: var(--text-xl);
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-weight: 300;
+  line-height: 1.2;
 }
 
 .about__side {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-8);
   align-content: start;
 }
 
 .principles {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
+/* Each principle hangs from a hairline whose top is lit */
 .principles li {
+  position: relative;
   padding-left: var(--space-5);
-  border-left: 2px solid var(--color-sage);
-  color: var(--color-ink-soft);
+  border-left: 1px solid var(--color-line);
+  color: var(--color-text-soft);
+}
+
+.principles li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 1px;
+  height: 1.6rem;
+  background: var(--color-light);
+  box-shadow: 0 0 8px var(--glow);
 }
 
 .principles__title {
   margin-bottom: var(--space-1);
-  font-size: var(--text-lg);
-  color: var(--color-charcoal);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text);
 }
 
 .about__toolkit-label {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .skills {
@@ -48,7 +61,8 @@
 .skills dt {
   margin-bottom: var(--space-2);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .skills dd {
@@ -68,7 +82,7 @@
   }
 
   .about__statement {
-    font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+    font-size: clamp(2rem, 1.3rem + 1.9vw, 3rem);
     max-width: 22ch;
   }
 }

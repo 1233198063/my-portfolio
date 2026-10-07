@@ -10,7 +10,7 @@ const PAPER_DOI = "10.1007/978-981-92-1546-1_29";
 
 export const profile = {
   name: "Yuexin Li",
-  role: "Design Engineer",
+  role: "Full-Stack Engineer / Design Engineer",
   email: "yuexinli1203@gmail.com",
   github: "https://github.com/1233198063",
   linkedin: "https://www.linkedin.com/in/yuexin-li-317401251/",

@@ -4,40 +4,58 @@
 }
 
 .job {
+  position: relative;
   display: grid;
   gap: var(--space-4);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-line-strong);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-line);
+}
+
+/* Where each role's line begins, a short stroke catches the light */
+.job::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 3rem;
+  height: 1px;
+  background: var(--color-light);
+  box-shadow: 0 0 10px var(--glow);
 }
 
 .job__period {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--color-accent-ink);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--color-light-ink);
 }
 
 .job__location {
+  margin-top: var(--space-1);
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--color-text-faint);
 }
 
 .job__company {
   font-size: var(--text-xl);
+  font-weight: 400;
 }
 
 .job__role {
-  margin-top: var(--space-2);
+  margin-top: var(--space-1);
+  font-family: var(--font-display);
   font-style: italic;
-  font-family: var(--font-serif);
-  font-size: var(--text-xl);
-  color: var(--color-ink-soft);
+  font-weight: 300;
+  font-size: var(--text-lg);
+  color: var(--color-text-soft);
 }
 
 .job__achievements {
   display: grid;
   gap: var(--space-3);
-  max-width: 62ch;
+  max-width: 64ch;
   margin: var(--space-5) 0 0;
+  color: var(--color-text-soft);
 }
 
 .job__achievements li {
@@ -49,10 +67,10 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0.7em;
-  width: 0.8rem;
-  height: 1.5px;
-  background: var(--color-accent);
+  top: 0.82em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--color-light);
 }
 
 /* Folded bullets: grid rows animate 0fr -> 1fr; visibility removes hidden text from the tab/AT flow */
@@ -88,21 +106,24 @@
 .job__toggle {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  margin: var(--space-4) 0 var(--space-5);
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
   padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
-  border: 1.5px solid var(--color-line-strong);
-  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
   background: transparent;
-  font-size: var(--text-sm);
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease;
+  transition: border-color var(--duration-base) ease, background var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
 }
 
 .job__toggle:hover {
-  border-color: var(--color-charcoal);
-  background: var(--color-ivory);
+  border-color: var(--color-light);
+  background: var(--color-light-wash);
+  box-shadow: 0 0 20px -8px var(--glow);
 }
 
 /* Plus that rotates into a minus */
@@ -117,8 +138,8 @@
   content: "";
   position: absolute;
   inset: 50% 0 auto;
-  height: 1.5px;
-  background: var(--color-accent);
+  height: 1px;
+  background: var(--color-light);
   transition: transform var(--duration-base) var(--ease-out);
 }
 
@@ -132,16 +153,17 @@
 
 .job__stack {
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
 }
 
 .job__stack .eyebrow {
   margin-right: var(--space-2);
+  color: var(--color-text-faint);
 }
 
 @media (min-width: 768px) {
   .job {
     grid-template-columns: 14rem minmax(0, 1fr);
-    gap: var(--space-6);
+    gap: var(--space-7);
   }
 }

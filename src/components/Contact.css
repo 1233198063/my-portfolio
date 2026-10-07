@@ -1,41 +1,38 @@
-/* Dark closing section: the one place charcoal becomes the ground */
+/* The close of the page: the sun setting on the horizon. The footer below is the water. */
 .contact {
-  background: var(--color-charcoal);
-  color: var(--color-ivory);
-}
-
-.contact .eyebrow {
-  color: var(--color-sage);
+  overflow: hidden;
+  padding-bottom: calc(min(21vw, 13rem) + var(--space-8));
 }
 
 .contact__title {
-  margin: var(--space-4) 0 var(--space-7);
+  margin: var(--space-5) 0 var(--space-7);
   max-width: 14ch;
   font-size: var(--text-hero);
-  font-weight: 600;
-  line-height: 0.98;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .contact__title em {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.1em;
-  letter-spacing: -0.01em;
-  color: var(--color-accent-light);
+  color: var(--color-light-ink);
+  text-shadow: 0 0 32px var(--glow);
 }
 
 .contact__email {
   display: inline-block;
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
+  padding-bottom: 2px;
+  /* Body face, not the display serif: its old-style 1 reads as an "i" in the address */
+  font-size: var(--text-lg);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  border-bottom: 1.5px solid var(--color-accent-light);
+  border-bottom: 1px solid var(--color-light);
   overflow-wrap: anywhere;
-  transition: color var(--duration-fast) ease;
+  transition: color var(--duration-base) ease, text-shadow var(--duration-base) ease;
 }
 
 .contact__email:hover {
-  color: var(--color-accent-light);
+  color: var(--color-light-ink);
+  text-shadow: 0 0 24px var(--glow);
 }
 
 .contact__links {
@@ -43,22 +40,85 @@
   gap: var(--space-6);
   margin-top: var(--space-6);
   font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
 .contact__links a {
-  text-underline-offset: 4px;
+  text-decoration-color: var(--color-light);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: color var(--duration-base) ease;
 }
 
-.contact :focus-visible,
-.site-footer :focus-visible {
-  outline-color: var(--color-accent-light);
+.contact__links a:hover {
+  color: var(--color-light-ink);
+}
+
+/* Sunset: a wide glow along the horizon and the half-set disk of the sun */
+.contact__sun {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(42vw, 26rem);
+  aspect-ratio: 1;
+  margin-left: max(-21vw, -13rem);
+  pointer-events: none;
+}
+
+.contact__sun::before {
+  content: "";
+  position: absolute;
+  inset: -70% -140% 0;
+  background: radial-gradient(ellipse 50% 38% at 50% 70%, var(--sunset-glow), transparent 70%);
+}
+
+.contact__sun::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* Pale gold heart warming to vermilion at the rim; the glow, not the gradient, softens the edge */
+  background: radial-gradient(
+    circle closest-side,
+    var(--sunset-core) 0 34%,
+    color-mix(in srgb, var(--sunset-core) 55%, var(--sunset-mid)) 72%,
+    var(--sunset-mid) 100%
+  );
+  box-shadow:
+    0 0 40px 2px color-mix(in srgb, var(--sunset-mid) 55%, transparent),
+    0 0 140px 30px var(--sunset-glow);
+  transform: translateY(50%);
+  opacity: 0.85;
+}
+
+/* As the section scrolls in, the sun sinks to the horizon */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .contact__sun::after {
+      animation: sunset linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes sunset {
+  from { transform: translateY(18%); }
+  to { transform: translateY(50%); }
+}
+
+.contact .container {
+  position: relative;
+  z-index: 1;
 }
 
 .site-footer {
-  padding-block: var(--space-5);
-  background: var(--color-charcoal);
-  color: var(--color-sage);
-  border-top: 1px solid rgba(247, 242, 232, 0.18);
+  padding-block: var(--space-6);
+  border-top: 1px solid color-mix(in srgb, var(--sunset-core) 45%, transparent);
+  /* The sun's reflection on the water */
+  background: radial-gradient(ellipse min(14vw, 9rem) 100% at 50% 0%, var(--sunset-glow), transparent);
+  color: var(--color-text-faint);
   font-size: var(--text-sm);
 }
 
@@ -66,4 +126,13 @@
   display: flex;
   justify-content: space-between;
   gap: var(--space-4);
+}
+
+.site-footer a {
+  text-decoration: none;
+  transition: color var(--duration-base) ease;
+}
+
+.site-footer a:hover {
+  color: var(--color-light-ink);
 }

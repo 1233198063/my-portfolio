@@ -1,11 +1,10 @@
 import { useRef } from "react";
 import { profile } from "../data/content";
 import usePointerParallax from "../hooks/usePointerParallax";
-import HeroCollage from "./HeroCollage";
+import HeroAperture from "./HeroAperture";
 import "./Hero.css";
-import "./WorkMock.css";
 
-// Each word rises in on its own delay (--i) for a staggered headline entrance.
+// Each word comes into focus on its own delay (--i) for a staggered headline entrance.
 const Word = ({ i, className = "", children }) => (
   <span className={`hero__word ${className}`.trim()} style={{ "--i": i }}>
     {children}
@@ -24,6 +23,7 @@ export default function Hero() {
             <b>{profile.name}</b> — {profile.role}
           </p>
 
+          {/* "complicated work" recedes; "calm." is the one word the light falls on */}
           <h1 id="hero-title" className="hero__title">
             <Word i={0}>Interfaces</Word>{" "}
             <Word i={1}>that</Word>{" "}
@@ -32,7 +32,9 @@ export default function Hero() {
               complicated work
             </Word>{" "}
             <Word i={4}>feel</Word>{" "}
-            <Word i={5}>calm.</Word>
+            <Word i={5} className="hero__lit">
+              calm.
+            </Word>
           </h1>
 
           <p className="hero__lede">
@@ -51,7 +53,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroCollage />
+        <HeroAperture />
       </div>
 
       <div className="container">

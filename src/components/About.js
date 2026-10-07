@@ -7,7 +7,7 @@ export default function About() {
     <section id="about" className="section" aria-labelledby="about-title">
       <div className="container about">
         <Reveal className="about__lead">
-          <p className="eyebrow">About</p>
+          <p className="eyebrow eyebrow--mark">About</p>
           <h2 id="about-title" className="about__statement">
             {about.intro}
           </h2>

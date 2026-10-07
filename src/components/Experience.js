@@ -61,7 +61,7 @@ function Job({ job, defaultOpen }) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="section section--tinted" aria-labelledby="experience-title">
+    <section id="experience" className="section section--shade" aria-labelledby="experience-title">
       <div className="container">
         <Reveal className="section-head">
           <p className="eyebrow">Experience</p>

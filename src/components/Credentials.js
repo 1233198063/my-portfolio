@@ -4,7 +4,7 @@ import "./Credentials.css";
 
 export default function Credentials() {
   return (
-    <section id="education" className="section section--tinted" aria-labelledby="education-title">
+    <section id="education" className="section section--shade" aria-labelledby="education-title">
       <div className="container">
         <Reveal className="section-head">
           <p className="eyebrow">Education &amp; research</p>

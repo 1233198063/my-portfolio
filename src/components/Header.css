@@ -2,15 +2,16 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--color-ivory) 90%, transparent);
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--color-line);
 }
 
 .site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--space-5);
   height: var(--header-height);
 }
 
@@ -18,24 +19,41 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
+  margin-right: auto;
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   text-decoration: none;
 }
 
-/* Half-filled circle (design | engineering) that flips on hover */
+/* The mark: a small arched window with the sun low inside it. The sun rises on hover. */
 .site-header__mark {
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 1.5px solid var(--color-charcoal);
-  border-radius: 50%;
-  background: linear-gradient(90deg, var(--color-accent) 50%, transparent 50%);
-  transition: transform var(--duration-base) var(--ease-out);
+  position: relative;
+  width: 0.85rem;
+  height: 1.15rem;
+  border: 1.25px solid var(--color-text-soft);
+  border-bottom-width: 1.25px;
+  border-radius: 999px 999px 1px 1px;
+  overflow: hidden;
 }
 
-.site-header__brand:hover .site-header__mark {
-  transform: rotate(180deg);
+.site-header__mark::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.12rem;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--color-light);
+  box-shadow: 0 0 8px 1px var(--glow);
+  transform: translateX(-50%);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.site-header__brand:hover .site-header__mark::after {
+  transform: translate(-50%, -0.38rem);
 }
 
 .site-nav {
@@ -46,51 +64,93 @@
 .site-nav a {
   position: relative;
   padding-block: var(--space-2);
-  font-size: var(--text-sm);
+  font-size: 0.875rem;
   font-weight: 500;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  color: var(--color-ink-soft);
-  transition: color var(--duration-fast) ease;
+  color: var(--color-text-soft);
+  transition: color var(--duration-base) ease;
 }
 
+/* Active section: a single point of light beneath the label */
 .site-nav a::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-base) var(--ease-out);
+  left: 50%;
+  bottom: -2px;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--color-light);
+  box-shadow: 0 0 8px 1px var(--glow);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform var(--duration-base) var(--ease-out), opacity var(--duration-base) ease;
 }
 
 .site-nav a:hover,
 .site-nav a[aria-current="location"] {
-  color: var(--color-charcoal);
+  color: var(--color-text);
 }
 
 .site-nav a:hover::after,
 .site-nav a[aria-current="location"]::after {
-  transform: scaleX(1);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.site-header__theme {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: calc(var(--space-2) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-soft);
+  cursor: pointer;
+  transition: color var(--duration-base) ease, filter var(--duration-base) ease;
+}
+
+.site-header__theme svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-header__theme:hover {
+  color: var(--color-light-ink);
+  filter: drop-shadow(0 0 6px var(--glow));
 }
 
 .site-header__toggle {
   display: none;
   padding: var(--space-2) var(--space-4);
-  border: 1.5px solid var(--color-charcoal);
-  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
   background: transparent;
-  font-size: var(--text-sm);
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   cursor: pointer;
 }
 
 @media (max-width: 767px) {
+  .site-header__inner {
+    gap: var(--space-3);
+  }
+
   .site-header__toggle {
     display: inline-block;
-    margin-left: auto;
+  }
+
+  .site-header__theme {
+    margin-right: 0;
   }
 
   /* Closed menu is visibility:hidden so its links are not tabbable */
@@ -102,7 +162,7 @@
     flex-direction: column;
     gap: 0;
     padding: var(--space-3) var(--gutter) var(--space-5);
-    background: var(--color-ivory);
+    background: var(--color-bg);
     border-bottom: 1px solid var(--color-line);
     visibility: hidden;
     opacity: 0;
@@ -124,7 +184,9 @@
     padding-block: var(--space-4);
     font-family: var(--font-display);
     font-size: var(--text-xl);
-    color: var(--color-charcoal);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--color-text);
     border-bottom: 1px solid var(--color-line);
   }
 
@@ -133,14 +195,14 @@
   }
 
   .site-nav a[aria-current="location"] {
-    color: var(--color-accent-ink);
+    color: var(--color-light-ink);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-nav,
   .site-nav a::after,
-  .site-header__mark {
+  .site-header__mark::after {
     transition: none;
   }
 }
@@ -159,8 +221,9 @@
       left: 0;
       bottom: -1px;
       width: 100%;
-      height: 2px;
-      background: var(--color-accent);
+      height: 1px;
+      background: var(--color-light);
+      box-shadow: 0 0 8px var(--glow);
       transform: scaleX(0);
       transform-origin: left;
       animation: scroll-progress linear both;

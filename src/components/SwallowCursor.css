@@ -1,0 +1,125 @@
+/* The system cursor is hidden only once the swallow is tracking (SwallowCursor.js adds .has-swallow) */
+html.has-swallow,
+html.has-swallow * {
+  cursor: none !important;
+}
+
+/* Text fields keep the system I-beam for precise caret placement; the swallow steps aside */
+html.has-swallow input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="button"]):not([type="submit"]):not([type="reset"]),
+html.has-swallow textarea,
+html.has-swallow [contenteditable="true"] {
+  cursor: text !important;
+}
+
+/* While the theme switches the page is a frozen snapshot, so the system cursor stands in */
+html.has-swallow.is-switching-theme,
+html.has-swallow.is-switching-theme * {
+  cursor: auto !important;
+}
+
+.swallow {
+  --u: 0.88px; /* one unit of the drawing */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483000;
+  display: none;
+  pointer-events: none;
+  will-change: transform;
+  transition: opacity var(--duration-fast) ease;
+}
+
+html.has-swallow .swallow {
+  display: block;
+}
+
+.swallow.is-away,
+.swallow.is-text,
+html.is-switching-theme .swallow {
+  opacity: 0;
+}
+
+/* Rotation and position come from JS on .swallow; press and hover poses live on this inner layer */
+.swallow__bird {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  transition: transform 180ms var(--ease-out);
+}
+
+.swallow.is-down .swallow__bird {
+  transform: scale(0.84);
+}
+
+/* The beak (drawing origin) sits exactly on the pointer's hotspot */
+.swallow svg {
+  position: absolute;
+  left: calc(-40 * var(--u));
+  top: calc(-22 * var(--u));
+  width: calc(44 * var(--u));
+  height: calc(44 * var(--u));
+  max-width: none; /* base.css caps svg at 100% of a container that is 0px wide here */
+  overflow: visible;
+  filter: var(--swallow-shadow);
+}
+
+.swallow__rim {
+  fill: var(--swallow-rim);
+  stroke: var(--swallow-rim);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.swallow__fill {
+  fill: url(#swallow-wash);
+}
+
+.swallow__feather {
+  fill: none;
+  stroke: var(--swallow-feather);
+  stroke-width: 0.55;
+  stroke-linecap: round;
+}
+
+.swallow__mark {
+  fill: var(--swallow-mark);
+}
+
+/* Wings scale toward the body's axis (the drawing's y = 0) to fold and beat */
+.swallow__wings {
+  transition: transform 260ms var(--ease-out);
+}
+
+.swallow.is-pointer .swallow__wings {
+  transform: scaleY(0.74);
+}
+
+/* Over something clickable, a spark of light at the beak marks where the click lands */
+.swallow__spark {
+  fill: var(--color-light);
+  stroke: var(--swallow-ink); /* keeps the spark visible over gold buttons */
+  stroke-width: 0.6;
+  opacity: 0;
+  filter: drop-shadow(0 0 2px var(--glow));
+  transform: scale(0.3);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity var(--duration-fast) ease, transform 300ms var(--ease-out);
+}
+
+.swallow.is-pointer .swallow__spark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .swallow.is-flying .swallow__wings {
+    animation: swallow-flap 300ms ease-in-out infinite;
+  }
+}
+
+@keyframes swallow-flap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.32); }
+}

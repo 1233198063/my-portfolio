@@ -13,7 +13,7 @@ export default function Archive() {
     >
       <div className="container">
         <Reveal>
-          <p className="eyebrow">Archive</p>
+          <p className="eyebrow eyebrow--mark">Archive</p>
           <h2 id="archive-title" className="archive__title">Earlier experiments</h2>
           <ul className="archive__list">
             {archive.map((item) => (

@@ -1,42 +1,155 @@
 /*
   Design tokens — the single source of truth for color, type, space and motion.
   Components must consume these variables and never hard-code values.
+
+  "Light through the frame": warm low light entering darkness. The default theme is
+  dusk (ink ground, gold light); [data-theme="light"] is dawn (golden morning mist).
+  Color names are semantic so both themes share every component rule.
 */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Ground and surfaces */
+  --color-bg: #12110e; /* warm ink */
+  --color-surface: #1a1915; /* raised */
+  --color-surface-2: #23211c; /* quiet fills inside surfaces */
+  --color-line: rgba(237, 229, 211, 0.12);
+  --color-line-strong: rgba(237, 229, 211, 0.26);
+
+  /* Text (contrast measured on --color-bg) */
+  --color-text: #ede5d3; /* rice paper, 15:1 */
+  --color-text-soft: #b5ac99; /* 8.4:1 */
+  --color-text-faint: #8c8574; /* 5.1:1, small meta only */
+
+  /* Light: the gold that every view is lit by */
+  --color-light: #e8b25a; /* fills, strokes, glows */
+  --color-light-ink: #e8b25a; /* gold as text, 9.8:1 */
+  --color-light-wash: rgba(232, 178, 90, 0.12);
+  --color-on-light: #12110e; /* text on a gold fill, 9.8:1 */
+  --glow: rgba(232, 178, 90, 0.35);
+
+  /* Cool counterpoint (water, shade) and the rare red focal point */
+  --color-deep: #2f4a45;
+  --color-deep-ink: #8fb3a3; /* jade, as text 8.2:1 */
+  --color-deep-wash: rgba(143, 179, 163, 0.1);
+  --color-focal: #b83a2b; /* vermilion: marks and fills only */
+
+  /* Atmosphere layers (see Atmosphere.js) */
+  --beam-rgb: 232, 178, 90;
+  --beam-alpha: 0.075;
+  --mist-a: rgba(232, 178, 90, 0.07);
+  --mist-b: rgba(47, 74, 69, 0.28);
+  --dust-rgb: 244, 217, 160;
+  --grain-opacity: 0.06;
+  --spot-alpha: 0.07;
+  --ray-alpha: 0.12;
+  --shadow-lift: 0 40px 80px -40px rgba(0, 0, 0, 0.75);
+
+  /* Hero window scene: dusk over water */
+  --scene-sky-top: #121a19;
+  --scene-sky-mid: #2f4a45;
+  --scene-sky-low: #b27a45;
+  --scene-horizon: #f0c06c;
+  --scene-sun-core: #fff1d2;
+  --scene-sun-edge: #e8b25a;
+  --scene-ridge: #1c2a28;
+  --scene-ridge-far: #3a5650;
+  --scene-water-top: #3a3a2c;
+  --scene-water-low: #0e1312;
+  --scene-glint: #f6d391;
+  --scene-mist: rgba(240, 220, 180, 0.22);
+  --scene-bird: #0f1110;
+  --scene-frame: rgba(232, 178, 90, 0.7);
+
+  /* Swallow cursor: an ink swallow, rim-lit in gold, with a touch of vermilion */
+  --swallow-ink: #0b0a08;
+  --swallow-rim: rgba(244, 217, 160, 0.9);
+  --swallow-feather: rgba(244, 217, 160, 0.32);
+  --swallow-mark: #d0503c;
+  --swallow-shadow: drop-shadow(0 0 3px rgba(232, 178, 90, 0.5));
+
+  /* Closing sunset */
+  --sunset-core: #f0b765;
+  --sunset-mid: #b83a2b;
+  --sunset-glow: rgba(184, 58, 43, 0.35);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #f1e6d0; /* golden morning haze */
+  --color-surface: #f8f0e0;
+  --color-surface-2: #e8dabd;
+  --color-line: rgba(30, 28, 23, 0.14);
+  --color-line-strong: rgba(30, 28, 23, 0.32);
+
+  --color-text: #1e1c17; /* 13.8:1 */
+  --color-text-soft: #5a5244; /* 6.2:1 */
+  --color-text-faint: #685e4d; /* 5.2:1 */
+
+  --color-light: #d9982f; /* fills and glows only, never text (2:1) */
+  --color-light-ink: #7a4f0f; /* gold as text, 5.8:1 */
+  --color-light-wash: rgba(217, 152, 47, 0.16);
+  --color-on-light: #1e1c17; /* 6.9:1 */
+  --glow: rgba(217, 152, 47, 0.4);
+
+  --color-deep: #2f4a45;
+  --color-deep-ink: #2f4a45; /* 7.8:1 */
+  --color-deep-wash: rgba(47, 74, 69, 0.08);
+  --color-focal: #a8321f; /* 5.4:1, so it may also be text here */
+
+  --beam-rgb: 255, 236, 196;
+  --beam-alpha: 0.5;
+  --mist-a: rgba(255, 248, 230, 0.6);
+  --mist-b: rgba(217, 152, 47, 0.14);
+  --dust-rgb: 150, 104, 30;
+  --grain-opacity: 0.08;
+  --spot-alpha: 0.35;
+  --ray-alpha: 0.6;
+  --shadow-lift: 0 36px 70px -40px rgba(92, 62, 18, 0.4);
+
+  --scene-sky-top: #efe2c6;
+  --scene-sky-mid: #f2d7a0;
+  --scene-sky-low: #f4c47a;
+  --scene-horizon: #fbe3ae;
+  --scene-sun-core: #fffbef;
+  --scene-sun-edge: #f6cf86;
+  --scene-ridge: #c9b08a;
+  --scene-ridge-far: #dcc8a3;
+  --scene-water-top: #ecd6a8;
+  --scene-water-low: #d4bb8f;
+  --scene-glint: #fff8e6;
+  --scene-mist: rgba(255, 250, 238, 0.55);
+  --scene-bird: #3a3328;
+  --scene-frame: rgba(122, 79, 15, 0.6);
+
+  --swallow-ink: #1e1c17;
+  --swallow-rim: rgba(255, 250, 238, 0.95);
+  --swallow-feather: rgba(255, 250, 238, 0.4);
+  --swallow-mark: #a8321f;
+  --swallow-shadow: drop-shadow(0 2px 2px rgba(60, 40, 10, 0.3));
+
+  --sunset-core: #f6cf86;
+  --sunset-mid: #d9982f;
+  --sunset-glow: rgba(217, 152, 47, 0.3);
+}
+
 :root {
-  /* Color: warm ivory / charcoal / muted sage, with a cool cobalt accent */
-  --color-ivory: #f7f2e8; /* page background */
-  --color-paper: #fcf9f2; /* raised surfaces */
-  --color-sand: #ebe3d2; /* quiet fills */
-  --color-line: rgba(37, 35, 31, 0.16);
-  --color-line-strong: rgba(37, 35, 31, 0.4);
-
-  --color-charcoal: #25231f; /* primary text (14:1 on ivory) */
-  --color-ink-soft: #57534b; /* secondary text (6.9:1) */
-
-  --color-sage: #9aa893; /* decorative only */
-  --color-sage-wash: #dde3d5;
-  --color-sage-deep: #4f6349; /* text-safe sage (5.9:1) */
-
-  --color-accent: #f2a20c; /* marigold: fills, highlights, marks. NOT for text on ivory (1.9:1) */
-  --color-accent-light: #f7c548; /* decorative, and text on charcoal (9:1) */
-  --color-accent-wash: #fbe6b0;
-  --color-accent-ink: #8f5f00; /* text-safe mustard for small type (4.95:1 on ivory) */
-
-  /* Type */
-  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif; /* headlines */
-  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif; /* italic emphasis only */
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* Type: an airy old-style serif for display, a calm humanist sans for reading */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
+  --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
   --text-lg: clamp(1.15rem, 1.05rem + 0.5vw, 1.375rem);
-  --text-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
-  --text-2xl: clamp(2rem, 1.4rem + 3vw, 3.75rem);
-  --text-hero: clamp(2.75rem, 1.2rem + 5vw, 6rem);
+  --text-xl: clamp(1.625rem, 1.3rem + 1.4vw, 2.375rem);
+  --text-2xl: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
+  --text-hero: clamp(2.75rem, 1.3rem + 5vw, 6.25rem);
 
-  /* Space (4px base) */
+  /* Space (4px base, generous rhythm) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -45,21 +158,22 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4.5rem;
-  --space-section: clamp(4.5rem, 3rem + 8vw, 10rem);
+  --space-section: clamp(5rem, 3rem + 9vw, 11rem);
 
   /* Layout */
-  --container: 1200px;
-  --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 3rem);
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 3.5rem);
   --header-height: 4.25rem;
 
-  /* Shape */
-  --radius-sm: 6px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
+  /* Shape: architectural, nearly square corners; circles and arches are the exceptions */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
 
-  /* Motion */
+  /* Motion: unhurried. Drift for ambient movement, reveal for entrances */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-fast: 160ms;
-  --duration-base: 320ms;
-  --duration-slow: 700ms;
+  --ease-drift: cubic-bezier(0.33, 0, 0.2, 1);
+  --duration-fast: 220ms;
+  --duration-base: 450ms;
+  --duration-slow: 900ms;
 }

@@ -1,43 +1,66 @@
 .work__list {
   display: grid;
-  gap: clamp(4rem, 9vw, 8rem);
+  gap: clamp(5rem, 11vw, 10rem);
 }
 
 .project {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-7);
   align-items: center;
 }
 
-/* Oversized outlined numeral: a typographic anchor for each featured project */
+/* The demo is seen through a frame: an outer mat with light falling in from the upper right */
+.project__visual {
+  position: relative;
+  padding: clamp(0.875rem, 2.2vw, 1.75rem);
+  border: 1px solid var(--color-line);
+  background:
+    radial-gradient(ellipse 80% 70% at 85% 0%, var(--color-light-wash), transparent 70%),
+    linear-gradient(var(--color-deep-wash), var(--color-deep-wash));
+}
+
+/* Small notch of light at the frame's top edge, where the beam enters */
+.project__visual::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 12%;
+  width: 22%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-light), transparent);
+  box-shadow: 0 0 12px var(--glow);
+}
+
+/* Large italic numeral: a quiet anchor that catches the light on hover */
 .project__num {
   display: block;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 3rem + 8vw, 9rem);
-  font-weight: 700;
-  line-height: 0.8;
-  letter-spacing: -0.06em;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-charcoal);
-  transition: color var(--duration-base) ease;
+  font-size: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--color-text-faint);
+  transition: color var(--duration-slow) ease, text-shadow var(--duration-slow) ease;
 }
 
 .project:hover .project__num {
-  color: var(--color-accent);
+  color: var(--color-light-ink);
+  text-shadow: 0 0 30px var(--glow);
 }
 
 .project__title {
   margin: var(--space-3) 0 var(--space-2);
   font-size: var(--text-xl);
+  font-weight: 400;
 }
 
 .project__meta {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.04em;
-  color: var(--color-ink-soft);
+  color: var(--color-text-faint);
 }
 
 /* Big-number callouts */
@@ -47,8 +70,8 @@
   /* Top-align every stat. The default (stretch) made short-labelled stats taller, and since
      their content packs to the bottom (column-reverse) the numbers ended up at different heights. */
   align-items: flex-start;
-  gap: var(--space-5);
-  margin: var(--space-5) 0 0;
+  gap: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0 0;
 }
 
 .stat {
@@ -60,40 +83,37 @@
 .stat__value {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
-  font-weight: 500;
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+  font-weight: 400;
   white-space: nowrap;
   line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--color-charcoal);
-  align-self: flex-start;
-  padding: 0 0.12em;
-  margin-left: -0.12em;
-  /* marker highlight under the numerals */
-  background: linear-gradient(transparent 62%, var(--color-accent) 62%, var(--color-accent) 94%, transparent 94%);
+  color: var(--color-light-ink);
+  text-shadow: 0 0 24px var(--glow);
 }
 
 .stat__label {
-  max-width: 9.5rem;
+  max-width: 10rem;
   margin-top: var(--space-2);
-  font-size: var(--text-sm);
-  line-height: 1.4;
-  color: var(--color-ink-soft);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-text-soft);
 }
 
 .project__summary {
   max-width: 48ch;
   font-size: var(--text-lg);
-  color: var(--color-ink-soft);
+  line-height: 1.6;
+  color: var(--color-text-soft);
 }
 
 .project__highlights {
   display: grid;
-  gap: var(--space-2);
-  margin: var(--space-5) 0;
-  padding-top: var(--space-4);
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+  padding-top: var(--space-5);
   border-top: 1px solid var(--color-line);
   font-size: var(--text-sm);
+  line-height: 1.6;
 }
 
 .project__highlights li {
@@ -104,24 +124,25 @@
 .project__highlights li::before {
   content: "";
   flex: none;
-  width: 0.45rem;
-  height: 0.45rem;
-  margin-top: 0.5em;
+  width: 4px;
+  height: 4px;
+  margin-top: 0.7em;
   border-radius: 50%;
-  background: var(--color-accent-light);
+  background: var(--color-light);
+  box-shadow: 0 0 6px var(--glow);
 }
 
 .project__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 @media (min-width: 960px) {
   .project {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    gap: clamp(3rem, 6vw, 6rem);
+    gap: clamp(3rem, 7vw, 7rem);
   }
 
   .project--flip {
@@ -130,5 +151,29 @@
 
   .project--flip .project__visual {
     order: 2;
+  }
+
+  /* Mirror the light so it always enters from the outer edge */
+  .project--flip .project__visual {
+    background:
+      radial-gradient(ellipse 80% 70% at 15% 0%, var(--color-light-wash), transparent 70%),
+      linear-gradient(var(--color-deep-wash), var(--color-deep-wash));
+  }
+
+  .project--flip .project__visual::before {
+    right: auto;
+    left: 12%;
+  }
+}
+
+/* The frame opens like a round window as the project arrives */
+@media (prefers-reduced-motion: no-preference) {
+  .project__visual {
+    clip-path: circle(100% at 50% 50%);
+    transition: clip-path 1600ms var(--ease-out) 120ms;
+  }
+
+  .project.reveal:not(.is-visible) .project__visual {
+    clip-path: circle(0% at 50% 50%);
   }
 }

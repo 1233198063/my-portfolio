@@ -1,6 +1,7 @@
 .archive__title {
   margin: var(--space-3) 0 var(--space-6);
   font-size: var(--text-xl);
+  font-weight: 400;
 }
 
 .archive__list {
@@ -16,18 +17,19 @@
   grid-template-columns: 1fr auto;
   gap: var(--space-1) var(--space-4);
   align-items: baseline;
-  /* Inset the row so its highlight can reach past the text edge while the text stays on the grid */
+  /* Inset the row so its light can reach past the text edge while the text stays on the grid */
   margin-inline: calc(var(--space-3) * -1);
   padding: var(--space-4) var(--space-3);
-  border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: background-color var(--duration-base) ease;
+  /* Light sweeps across the row from the left */
+  background: linear-gradient(90deg, var(--color-light-wash), transparent 85%) no-repeat;
+  background-size: 0% 100%;
+  transition: background-size var(--duration-slow) var(--ease-out);
 }
 
-/* Whole-row highlight in the lighter marigold wash */
 .archive__list a:hover,
 .archive__list a:focus-visible {
-  background-color: var(--color-accent-wash);
+  background-size: 100% 100%;
 }
 
 .archive__list a:hover .button__arrow,
@@ -38,7 +40,7 @@
 /* Title and tech stack slide right together on hover. transform, not padding, so nothing reflows. */
 .archive__name,
 .archive__tech {
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--duration-base) var(--ease-out), color var(--duration-base) ease;
 }
 
 .archive__tech {
@@ -52,21 +54,30 @@
   transform: translateX(var(--space-3));
 }
 
+.archive__list a:hover .archive__name,
+.archive__list a:focus-visible .archive__name {
+  color: var(--color-light-ink);
+}
+
 .archive__name {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .archive__tech {
   grid-row: 2;
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
 }
 
 .archive__list .button__arrow {
   grid-row: 1 / span 2;
   grid-column: 2;
   align-self: center;
+  color: var(--color-light-ink);
 }
 
 @media (min-width: 768px) {

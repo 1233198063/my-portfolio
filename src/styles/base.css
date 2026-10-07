@@ -7,6 +7,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  background: var(--color-bg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -15,13 +16,14 @@ html {
   }
 }
 
+/* No background on body: it would paint over the fixed atmosphere layers at z-index -1.
+   <html> carries the page color instead. */
 body {
   margin: 0;
-  background: var(--color-ivory);
-  color: var(--color-charcoal);
+  color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--text-base);
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -61,10 +63,9 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-optical-sizing: auto;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
@@ -73,14 +74,14 @@ p {
 }
 
 ::selection {
-  background: var(--color-accent-wash);
-  color: var(--color-charcoal);
+  background: var(--color-light-wash);
+  color: var(--color-text);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-charcoal);
+  outline: 1.5px solid var(--color-light);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* Layout */
@@ -89,72 +90,118 @@ p {
   margin-inline: auto;
 }
 
+/* Content sits above the fixed atmosphere layers (see Atmosphere.css) */
+main,
+.site-footer {
+  position: relative;
+}
+
 .section {
+  position: relative;
   padding-block: var(--section-pad, var(--space-section));
   scroll-margin-top: var(--header-height);
 }
 
-.section--tinted {
-  background: var(--color-paper);
-  border-block: 1px solid var(--color-line);
+/* Passing through shade, like walking under a bridge: a cool wash that fades in and out */
+.section--shade {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-deep-wash) 18%,
+    var(--color-deep-wash) 82%,
+    transparent
+  );
 }
 
-/* Small uppercase label used across sections */
+/* Small tracked-out label used across sections */
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--text-xs);
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
 }
 
 .eyebrow b {
-  font-weight: 500;
-  color: var(--color-accent-ink);
+  font-weight: 600;
+  color: var(--color-light-ink);
 }
 
 .section-head {
   display: grid;
   gap: var(--space-4);
-  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+  margin-bottom: clamp(3rem, 7vw, 6rem);
 }
 
 .section-head h2 {
   font-size: var(--text-2xl);
+  font-weight: 300;
   max-width: 18ch;
+}
+
+/* A thin ring of light before each section label; it draws itself as the section arrives */
+@property --ring {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+.section-head .eyebrow,
+.eyebrow--mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.section-head .eyebrow::before,
+.eyebrow--mark::before {
+  content: "";
+  flex: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-light) var(--ring), transparent 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
 }
 
 /* Buttons & links */
 .button {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 0.85rem 1.5rem;
-  border: 1.5px solid var(--color-charcoal);
-  border-radius: 999px;
-  background: transparent;
+  gap: var(--space-3);
+  padding: 0.9rem 1.6rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  /* Light sweeps in from the left on hover */
+  background: linear-gradient(90deg, var(--color-light-wash), transparent) no-repeat;
+  background-size: 0% 100%;
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--duration-fast) ease, color var(--duration-fast) ease,
-    transform var(--duration-base) var(--ease-out);
+  transition: background-size var(--duration-slow) var(--ease-out),
+    border-color var(--duration-base) ease, box-shadow var(--duration-base) ease;
 }
 
 .button:hover {
-  background: var(--color-charcoal);
-  color: var(--color-ivory);
+  background-size: 100% 100%;
+  border-color: var(--color-light);
+  box-shadow: 0 0 28px -8px var(--glow);
 }
 
+/* The brightest thing in view is the thing to do next */
 .button--solid {
-  background: var(--color-charcoal);
-  color: var(--color-ivory);
+  border-color: var(--color-light);
+  background: var(--color-light);
+  color: var(--color-on-light);
 }
 
 .button--solid:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-charcoal); /* charcoal on marigold: 7.4:1 */
+  background: var(--color-light);
+  box-shadow: 0 0 0 1px var(--color-light), 0 0 36px -4px var(--glow);
 }
 
 .button__arrow {
@@ -171,31 +218,29 @@ p {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-weight: 500;
+  padding-bottom: 2px;
+  font-weight: 600;
   text-decoration: none;
-  border-bottom: 1.5px solid var(--color-accent);
-  /* Horizontal padding gives the highlight room; the negative margin keeps the text on the grid.
-     Rounded on top only, so the highlight sits flush on the underline. */
-  padding: 2px 6px;
-  margin-inline: -6px;
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  transition: background-color var(--duration-base) ease;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-light);
+  transition: color var(--duration-base) ease, text-shadow var(--duration-base) ease;
 }
 
-/* Light marigold wash on hover and keyboard focus, same as the Earlier experiments rows */
 .link-arrow:hover,
 .link-arrow:focus-visible {
-  background-color: var(--color-accent-wash);
+  color: var(--color-light-ink);
+  text-shadow: 0 0 18px var(--glow);
 }
 
 .tag {
   display: inline-block;
-  padding: 0.2rem 0.7rem;
-  border: 1px solid var(--color-line-strong);
-  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-ink-soft);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-soft);
 }
 
 .skip-link {
@@ -204,8 +249,8 @@ p {
   top: -4rem;
   z-index: 100;
   padding: var(--space-3) var(--space-5);
-  background: var(--color-charcoal);
-  color: var(--color-ivory);
+  background: var(--color-light);
+  color: var(--color-on-light);
   border-radius: var(--radius-sm);
   transition: top var(--duration-fast) ease;
 }
@@ -214,17 +259,30 @@ p {
   top: var(--space-4);
 }
 
-/* Scroll reveal — hidden state only exists when motion is welcome */
+/* Scroll reveal: a focus pull, as if a lens were finding the subject.
+   The hidden state only exists when motion is welcome. */
 @media (prefers-reduced-motion: no-preference) {
   .reveal:not(.is-visible) {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
+    filter: blur(6px);
   }
 
   .reveal {
     transition: opacity var(--duration-slow) var(--ease-out),
-      transform var(--duration-slow) var(--ease-out);
+      transform var(--duration-slow) var(--ease-out),
+      filter var(--duration-slow) var(--ease-out);
     transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .section-head.reveal:not(.is-visible) .eyebrow::before,
+  .reveal:not(.is-visible) .eyebrow--mark::before {
+    --ring: 0%;
+  }
+
+  .section-head .eyebrow::before,
+  .eyebrow--mark::before {
+    transition: --ring 1600ms var(--ease-out) 250ms;
   }
 }
 
@@ -235,6 +293,13 @@ p {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* Theme switch: the new light opens out of the toggle like a round window (see useTheme.js) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 /* Safety net: any motion not already gated above is neutralised for users who ask for less */

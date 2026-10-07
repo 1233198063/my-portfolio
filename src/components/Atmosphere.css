@@ -1,0 +1,111 @@
+/*
+  Fixed atmosphere behind the page: two drifting banks of mist, beams of window light,
+  a cursor light and floating dust. z-index -1 keeps them under all content (which is why
+  only <html>, not <body>, paints the page background). Film grain sits above everything.
+*/
+.atmosphere__mist,
+.atmosphere__beam,
+.atmosphere__spot,
+.atmosphere__dust {
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.atmosphere__mist {
+  width: 90vmax;
+  height: 90vmax;
+  border-radius: 50%;
+}
+
+.atmosphere__mist--a {
+  top: -38vmax;
+  right: -30vmax;
+  background: radial-gradient(closest-side, var(--mist-a), transparent);
+  animation: mist-drift-a 80s var(--ease-drift) infinite alternate;
+}
+
+.atmosphere__mist--b {
+  bottom: -45vmax;
+  left: -35vmax;
+  background: radial-gradient(closest-side, var(--mist-b), transparent);
+  animation: mist-drift-b 95s var(--ease-drift) infinite alternate;
+}
+
+/* One beam: a soft band of light, brightest along its centre, fading along its length.
+   Geometry comes from BEAMS in Atmosphere.js so the dust glints line up with it. */
+.atmosphere__beam {
+  top: -10vh;
+  left: calc(var(--beam-x) * 100vw - var(--beam-width) * 50vw);
+  width: calc(var(--beam-width) * 100vw);
+  height: 175vh;
+  transform-origin: 50% 0;
+  transform: rotate(var(--beam-angle));
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--beam-rgb), calc(var(--beam-alpha) * var(--beam-strength))) 50%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(180deg, #000, rgba(0, 0, 0, 0.55) 45%, transparent 85%);
+  mask-image: linear-gradient(180deg, #000, rgba(0, 0, 0, 0.55) 45%, transparent 85%);
+  /* Clouds passing over the sun */
+  animation: beam-breathe var(--beam-breathe) ease-in-out infinite alternate;
+}
+
+.atmosphere__spot {
+  top: -260px;
+  left: -260px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(var(--beam-rgb), var(--spot-alpha)), transparent);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  will-change: transform;
+}
+
+.atmosphere__spot.is-on {
+  opacity: 1;
+}
+
+.atmosphere__dust {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Static film grain over the whole page; it also lifts the blacks a touch, like film */
+.atmosphere__grain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+@keyframes mist-drift-a {
+  to { transform: translate3d(-14vw, 10vh, 0) scale(1.1); }
+}
+
+@keyframes mist-drift-b {
+  to { transform: translate3d(12vw, -8vh, 0) scale(1.06); }
+}
+
+@keyframes beam-breathe {
+  from { opacity: 1; }
+  to { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere__mist,
+  .atmosphere__beam {
+    animation: none;
+  }
+
+  .atmosphere__spot {
+    display: none;
+  }
+}
