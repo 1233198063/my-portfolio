@@ -14,8 +14,8 @@ export const profile = {
   email: "yuexinli1203@gmail.com",
   github: "https://github.com/1233198063",
   linkedin: "https://www.linkedin.com/in/yuexin-li-317401251/",
-  focus: "AI agent workflows and product UI",
-  stack: "React · TypeScript · Next.js · Python",
+  focus: "Full-stack AI features and product UI",
+  stack: "React · TypeScript · Node.js · Python",
 };
 
 export const navItems = [
@@ -27,23 +27,25 @@ export const navItems = [
 
 export const featuredProjects = [
   {
-    id: "ops-workspace",
+    id: "ai-crm",
     visual: "workspace",
-    title: "AI Customer Operations Workspace",
-    org: "Blackwave Services LLC",
+    title: "Context-Aware AI CRM",
+    org: "Blackwave Services",
     period: "Feb. 2026 – Present",
     summary:
-      "An AI-assisted workspace that unifies account, opportunity, support, activity and knowledge context into agent-guided workflows.",
+      "A multi-tenant CRM used by 6 client organizations, where an AI assistant reads the page you are on and your browsing history, then answers with cards, dashboards or actions to approve.",
     stats: [
-      { value: "30–35%", label: "less time to review a customer and decide the next action (approx.)" },
-      { value: "~30%", label: "lower perceived AI wait time (approx.)" },
+      { value: "100+", label: "AI card configurations, up from 12, with no initial-bundle growth" },
+      { value: "240 ms", label: "p75 filter-to-render, down from 620 ms" },
+      { value: "4 days", label: "to onboard a new client, down from 3 weeks" },
     ],
     highlights: [
-      "Client architecture for long-running agent workflows over SSE and WebSocket: streamed LLM output, tool progress, human approvals, cancellation, retries and session recovery",
-      "Schema-driven Generative UI with 6+ reusable patterns: recommendations, citations, tool actions, approval requests, task progress and next steps",
-      "Deterministic message ordering and stale-response protection for concurrent agent sessions",
+      "Drag-and-resize dashboard builder backed by 8 lazy-loaded, typed card renderers",
+      "Schema-driven UI that renders each client’s fields and page layouts from versioned config on one shared codebase",
+      "Resumable SSE stream for the assistant: 200 forced disconnects, no lost or duplicated output",
+      "Chat-to-query over CRM data, with LLM-written SQL hardened by AST allowlisting, tenant/role scoping and read-only execution",
     ],
-    tags: ["React", "TypeScript", "Redux Toolkit", "SSE", "WebSocket"],
+    tags: ["React", "TypeScript", "TanStack Query", "Node.js", "SSE", "PostgreSQL"],
     href: null,
   },
   {
@@ -66,22 +68,21 @@ export const featuredProjects = [
   {
     id: "image-analysis",
     visual: "analysis",
-    title: "AI Image Analysis Platform",
-    org: "SiriusMindShare LLC",
-    period: "Feb. 2025 – Nov. 2025",
+    title: "Retail Visual Analysis Platform",
+    org: "SiriusMindShare",
+    period: "Feb. 2025 – Feb. 2026",
     summary:
-      "A full-stack platform productized from a Python research pipeline: batch ingestion, searchable results, analytics and exportable reports.",
+      "Productized from my M.S. visual-attention research: a platform that turns store photos and walkthrough videos into shelf and signage recommendations.",
     stats: [
-      { value: "~70%", label: "less repetitive analysis work (approx.)" },
-      { value: "20+", label: "RESTful endpoints" },
-      { value: "90%+", label: "OCR accuracy" },
+      { value: "18", label: "retailers adopted the platform" },
+      { value: "~70%", label: "less manual analysis for their teams (approx.)" },
     ],
     highlights: [
-      "Drag-and-drop batch ingestion with batch controls, system status, interactive analytics and reporting in React and TypeScript",
-      "Modular FastAPI services: 20+ RESTful endpoints and relational MySQL schemas for ingestion, parallel analysis and retrieval",
-      "Hybrid OCR (Tesseract, EasyOCR) with OpenCV preprocessing, evaluated on 720 images from 144 online shops",
+      "Review workspace that layers OCR boxes, product regions and predicted-attention heatmaps over store photos and video keyframes",
+      "Every recommendation linked to the image region behind it, with before/after and cross-store comparisons of versioned analyses",
+      "Resumable S3 uploads, an SQS buffer and a per-asset state machine with per-stage retries, so one bad video never fails the batch",
     ],
-    tags: ["React", "TypeScript", "FastAPI", "MySQL", "Python"],
+    tags: ["React", "TypeScript", "FastAPI", "MySQL", "AWS S3 / SQS", "OpenCV"],
     href: `https://doi.org/${PAPER_DOI}`,
     linkLabel: "Read the related paper",
   },
@@ -100,16 +101,21 @@ export const careerMapStops = [
 
 export const experience = [
   {
-    company: "Blackwave Services LLC",
-    role: "React Developer",
+    company: "Blackwave Services",
+    role: "Software Engineer",
     period: "Feb. 2026 – Present",
     location: "San Jose, CA",
-    stack: "React, TypeScript, Redux Toolkit, SSE, WebSocket",
+    stack: "React, TypeScript, TanStack Query, Node.js, PostgreSQL, SSE, Playwright",
+    summary:
+      "At an early-stage startup, owned the React/TypeScript frontend and full-stack AI features of a multi-tenant CRM used by 6 client organizations, where a context-aware LLM resolves each question against the user’s current page and browsing history, then turns it into cards, dashboards, or actions to approve.",
     achievements: [
-      "Built an AI-assisted customer operations workspace that unified account, opportunity, support, activity, and knowledge context into agent-guided workflows, reducing customer review and next-action decision time by approximately 30–35%.",
-      "Designed the client architecture for long-running agent workflows using SSE and WebSocket, supporting streamed LLM output, tool-execution progress, human approvals, cancellation, retries, partial failures, and session recovery while reducing perceived AI wait time by approximately 30%.",
-      "Developed a schema-driven Generative UI system with 6+ reusable patterns for agent recommendations, citations, tool actions, approval requests, task progress, and next-step guidance across dynamic workflows.",
-      "Hardened concurrent agent sessions with deterministic message ordering, stale-response protection, cancellation, recovery, automated testing, and frontend telemetry, reducing inconsistent behavior and regression effort by approximately 25–30%.",
+      "Replaced static reports with a drag-and-resize dashboard builder, expanding the AI assistant’s card configurations from 12 to 100+ via 8 lazy-loaded typed renderers with no initial-bundle growth.",
+      "Designed a schema-driven React UI layer that renders each client’s fields and page layouts from versioned config on one shared codebase, cutting new-client onboarding from 3 weeks to 4 days.",
+      "Cut p75 filter-to-render from 620 to 240 ms (12-card benchmark) with selector-level subscriptions on scoped TanStack Query caches, so a filter change re-renders only the affected cards.",
+      "Built the assistant’s resumable SSE stream and co-designed its Node.js API to carry page and browsing-history context; 200 forced disconnects caused no lost or duplicated output.",
+      "Made CRM data queryable by chat: the LLM extracts metrics, filters, and date ranges into a typed query spec rendered as cards, cutting data-engineer requests from hours to under 5 minutes.",
+      "Hardened LLM-written SQL for open-ended questions against prompt injection with AST allowlisting, tenant/role scoping, and read-only PostgreSQL execution.",
+      "Halved my median spec-to-production time with AI coding agents, gating their changes behind a 120-case Playwright AI eval of the CRM assistant’s authorization and tool use.",
     ],
   },
   {
@@ -126,16 +132,20 @@ export const experience = [
     ],
   },
   {
-    company: "SiriusMindShare LLC",
+    company: "SiriusMindShare",
     role: "Data Scientist Intern → Software Engineering Intern",
-    period: "Feb. 2025 – Nov. 2025",
+    period: "Feb. 2025 – Feb. 2026",
     location: "San Jose, CA",
-    stack: "Python, React, TypeScript, FastAPI, MySQL",
+    stack: "React, TypeScript, FastAPI, MySQL, AWS S3/SQS, Python, OpenCV",
+    summary:
+      "Productized my M.S. visual-attention research into a platform that turns store photos and videos into shelf and signage recommendations; adopted by 18 retailers, it cut their manual analysis by approximately 70%.",
     achievements: [
-      "Productized a Python research pipeline into a full-stack AI-powered Image Analysis Platform with batch ingestion, searchable results, analytics, and exportable reports, reducing repetitive analysis work by approximately 70%.",
-      "Designed modular FastAPI services with 20+ RESTful endpoints and relational MySQL schemas for ingestion, parallel analysis, result storage, health monitoring, and retrieval across batch-processing workflows.",
-      "Built the React and TypeScript product experience for drag-and-drop ingestion, batch controls, system status, interactive analytics, and reporting, owning features across frontend, APIs, and data flows.",
-      "Developed the underlying Python computer-vision pipeline across 720 images from 144 online shops using Tesseract, EasyOCR, OpenCV, and KMeans; improved OCR accuracy to 90%+ through preprocessing and hybrid OCR integration, contributing to a Springer Nature publication.",
+      "Shipped a React/TypeScript review workspace that layers OCR boxes, product regions, and predicted-attention heatmaps over store photos and walkthrough-video keyframes on a timeline.",
+      "Linked every recommendation to the image region behind it and designed synchronized before/after and cross-store comparisons of versioned analyses, so teams could verify each display change.",
+      "Kept large media batches responsive with virtualization and on-demand loading, and surfaced live per-asset status so reviewers could start on finished assets while the rest kept processing.",
+      "Engineered resumable direct uploads to S3 and an SQS queue that absorbed upload spikes before frame extraction, OCR, and visual analysis, streaming progress to the UI over SSE.",
+      "Modeled a per-asset processing state machine in FastAPI/MySQL with partial results and per-stage retries, so one bad video didn’t fail the batch and finished work wasn’t rerun.",
+      "Developed a Python/OpenCV/OCR pipeline that drops blurry and duplicate frames, reads signage text, and scores visibility and clutter from attention maps; co-authored an ICMLSC 2026 paper.",
     ],
   },
 ];
@@ -177,22 +187,40 @@ export const about = {
   skills: [
     {
       label: "Languages",
-      items: ["JavaScript", "TypeScript", "Python", "SQL", "HTML5", "CSS3"],
+      items: ["TypeScript", "JavaScript", "Python", "SQL", "HTML/CSS"],
     },
     {
-      label: "Frameworks",
+      label: "Frontend",
       items: [
-        "React", "Next.js", "Redux Toolkit", "Node.js", "Express", "FastAPI",
-        "REST APIs", "SSE", "WebSocket", "Ant Design", "MCP",
+        "React", "Next.js", "Redux Toolkit", "TanStack Query", "Tailwind CSS",
+        "Vite", "Ant Design", "Accessibility", "Figma",
       ],
     },
     {
-      label: "Tools",
+      label: "Backend & Data",
       items: [
-        "Figma", "MySQL", "PostgreSQL", "Git", "GitHub", "Docker",
-        "Swagger / OpenAPI", "Postman", "Jest", "React Testing Library",
-        "Playwright", "GA4", "GTM",
+        "Node.js", "Express", "FastAPI", "REST", "GraphQL", "PostgreSQL",
+        "MySQL", "Redis", "SSE", "WebSockets",
       ],
+    },
+    {
+      label: "AI & LLM",
+      items: [
+        "OpenAI / Anthropic APIs", "Tool calling", "Structured outputs",
+        "Text-to-SQL", "Prompt engineering", "Evals",
+      ],
+    },
+    {
+      label: "Computer Vision",
+      items: ["OpenCV", "OCR (Tesseract, EasyOCR)", "Predicted-attention heatmaps"],
+    },
+    {
+      label: "Cloud & DevOps",
+      items: ["AWS (S3, SQS)", "Docker", "Terraform", "GitHub Actions", "CI/CD", "OpenTelemetry"],
+    },
+    {
+      label: "Testing",
+      items: ["Jest", "Vitest", "React Testing Library", "Playwright", "MSW"],
     },
   ],
 };
