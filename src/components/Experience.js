@@ -21,6 +21,7 @@ function Job({ job, defaultOpen }) {
       <div className="job__body">
         <h3 className="job__company">{job.company}</h3>
         <p className="job__role">{job.role}</p>
+        {job.summary && <p className="job__summary">{job.summary}</p>}
 
         <ul className="job__achievements">
           {lead.map((item) => (

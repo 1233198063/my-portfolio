@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 import "./Demos.css";
 
-const CONVERSATIONS = ["Conversation 1", "Conversation 2", "Conversation 3", "Conversation 4"];
+const REQUESTS = ["Request 1", "Request 2", "Request 3", "Request 4"];
 const DRAFT_MS = 1600;
 
 const STATUS = {
-  drafting: { pill: "Drafting…", tone: "sage", text: "Drafting a reply" },
-  ready: { pill: "Needs review", tone: "accent", text: "Draft ready for review" },
-  sent: { pill: "Sent", tone: "sage", text: "Reply approved and sent" },
-  cancelled: { pill: "Cancelled", tone: "muted", text: "Drafting cancelled" },
+  drafting: { pill: "Thinking…", tone: "sage", text: "Assistant is preparing an action" },
+  ready: { pill: "Needs approval", tone: "accent", text: "Action ready for approval" },
+  sent: { pill: "Approved", tone: "sage", text: "Action approved and applied" },
+  cancelled: { pill: "Cancelled", tone: "muted", text: "Request cancelled" },
 };
 
-// A small state machine that mirrors the real workspace's human-in-the-loop flow:
-// the AI drafts, a person reviews, and can approve, cancel or retry.
+// A small state machine that mirrors the CRM assistant's human-in-the-loop flow:
+// the AI proposes an action, a person reviews it, and can approve, cancel or retry.
 export default function WorkspaceDemo() {
   const reduced = usePrefersReducedMotion();
   const [active, setActive] = useState(1);
@@ -45,8 +45,8 @@ export default function WorkspaceDemo() {
       </div>
 
       <div className="demo__body">
-        <div className="demo__queue" role="group" aria-label="Conversation queue">
-          {CONVERSATIONS.map((name, i) => (
+        <div className="demo__queue" role="group" aria-label="Assistant requests">
+          {REQUESTS.map((name, i) => (
             <button
               key={name}
               type="button"
@@ -83,7 +83,7 @@ export default function WorkspaceDemo() {
               {status === "ready" && (
                 <>
                   <button type="button" className="demo__btn demo__btn--solid" onClick={() => setStatus("sent")}>
-                    Approve &amp; send
+                    Approve
                   </button>
                   <button type="button" className="demo__btn" onClick={startDraft}>
                     Regenerate
@@ -97,7 +97,7 @@ export default function WorkspaceDemo() {
               )}
               {status === "sent" && (
                 <button type="button" className="demo__btn" onClick={startDraft}>
-                  Draft another
+                  Ask again
                 </button>
               )}
             </div>

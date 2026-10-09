@@ -35,12 +35,11 @@ export const featuredProjects = [
     summary:
       "A multi-tenant CRM used by 6 client organizations, where an AI assistant reads the page you are on and your browsing history, then answers with cards, dashboards or actions to approve.",
     stats: [
-      { value: "100+", label: "AI card configurations, up from 12, with no initial-bundle growth" },
-      { value: "240 ms", label: "p75 filter-to-render, down from 620 ms" },
       { value: "4 days", label: "to onboard a new client, down from 3 weeks" },
+      { value: "240 ms", label: "p75 filter-to-render, down from 620 ms" },
     ],
     highlights: [
-      "Drag-and-resize dashboard builder backed by 8 lazy-loaded, typed card renderers",
+      "Drag-and-resize dashboard builder that grew the assistant’s card configurations from 12 to 100+ with no initial-bundle growth",
       "Schema-driven UI that renders each client’s fields and page layouts from versioned config on one shared codebase",
       "Resumable SSE stream for the assistant: 200 forced disconnects, no lost or duplicated output",
       "Chat-to-query over CRM data, with LLM-written SQL hardened by AST allowlisting, tenant/role scoping and read-only execution",

@@ -50,6 +50,13 @@
   color: var(--color-text-soft);
 }
 
+/* Optional one-paragraph context for the role, read before the bullets */
+.job__summary {
+  max-width: 64ch;
+  margin-top: var(--space-4);
+  color: var(--color-text);
+}
+
 .job__achievements {
   display: grid;
   gap: var(--space-3);

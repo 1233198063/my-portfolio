@@ -15,11 +15,11 @@ test('features the two priority projects before the additional project and archi
   const titles = screen
     .getAllByRole('heading', { level: 3 })
     .map((h) => h.textContent);
-  const ops = titles.indexOf('AI Customer Operations Workspace');
+  const crm = titles.indexOf('Context-Aware AI CRM');
   const map = titles.indexOf('Interactive Career Path Map');
-  const image = titles.indexOf('AI Image Analysis Platform');
-  expect(ops).toBeGreaterThanOrEqual(0);
-  expect(map).toBeGreaterThan(ops);
+  const image = titles.indexOf('Retail Visual Analysis Platform');
+  expect(crm).toBeGreaterThanOrEqual(0);
+  expect(map).toBeGreaterThan(crm);
   expect(image).toBeGreaterThan(map);
 });
 
@@ -36,9 +36,9 @@ test('lists all three roles from the resume, newest first', () => {
     .getAllByRole('heading', { level: 3 })
     .map((h) => h.textContent);
   expect(companies).toEqual([
-    'Blackwave Services LLC',
+    'Blackwave Services',
     'Talentix Solutions Inc.',
-    'SiriusMindShare LLC',
+    'SiriusMindShare',
   ]);
 });
 
