@@ -45,7 +45,8 @@ export const featuredProjects = [
       "Chat-to-query over CRM data, with LLM-written SQL hardened by AST allowlisting, tenant/role scoping and read-only execution",
     ],
     tags: ["React", "TypeScript", "TanStack Query", "Node.js", "SSE", "PostgreSQL"],
-    href: null,
+    href: "https://1233198063.github.io/my-portfolio/crm-walkthrough/",
+    linkLabel: "Interactive walkthrough · sample data",
   },
   {
     id: "career-map",
